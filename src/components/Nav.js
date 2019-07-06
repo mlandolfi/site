@@ -7,7 +7,7 @@ export default function Nav(props) {
 			className="nav-root"
 			id={props.styleId}
 			onClick={() => props.onClick(props.label, props.color)}
-			style={props.selected ? { color: '#fff' } : {}}
+			style={props.selected ? { color: props.color, borderColor: props.color } : {}}
 		>
 			{props.label}
 		</div>
