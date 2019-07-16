@@ -1,0 +1,18 @@
+.map-location-root {
+	display: flex;
+	align-items: center;
+	height: 30px;
+	cursor: pointer;
+}
+
+.map-location-text {
+	text-transform: uppercase;
+	font-size: 18px;
+}
+
+.map-dash {
+	height: 4px;
+	width: 18px;
+	background: var(--second-color);
+	margin-right: 10px;
+}
