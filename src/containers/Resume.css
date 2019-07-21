@@ -1,16 +1,16 @@
 
 .resume-root {
 	display: flex;
-	justify-content: center;
+	justify-content: space-around;
 	display: flex;
 }
 
 .resume-map-container {
-	flex: 1;
 	position: relative;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
+	width: 170px;
 }
 
 .resume-map {
@@ -31,8 +31,8 @@
 }
 
 .resume-content {
-	flex: 3;
 	padding: 20px;
+	max-width: 900px;
 }
 
 .resume-section-title {

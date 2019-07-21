@@ -1,8 +1,9 @@
 :root {
-	--first-color: #14a76c;
-	--second-color: #303a75;
+	--first-color: #96FF9A;
+	--second-color: #BF5300;
 	--third-color: #ffe400;
-	--background-color: #fff;
+	--background-color: rgba(0, 20, 40, 0.2);
+	/*--background-color: rgba();*/
 }
 
 .app-root {

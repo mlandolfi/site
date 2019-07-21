@@ -4,6 +4,7 @@ import './App.css';
 import Nav from './components/Nav'
 
 import ResumeTab from './containers/Resume'
+import DivPlayground from './containers/DivPlayground';
 
 const tabs = [
 	{ label: 'about', styleId: 'nav-first', color: '#14a76c' },
@@ -35,15 +36,15 @@ class App extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			navTab: tabs[parseInt(tabs.length/2)].label,
-			tab: tabs[parseInt(tabs.length/2)].label,
-			tabColor: tabs[parseInt(tabs.length/2)].color,
+			navTab: tabs[2].label,
+			tab: tabs[2].label,
+			tabColor: tabs[2].color,
 			wrapClass: 'fade-in',
 		}
 	}
 
 	handleNavClick = (label, color) => {
-		if (this.state.wrapClass === 'fade-out')	return;
+		if (this.state.wrapClass === 'fade-out' || this.state.tab === label)	return;
 		this.setState({ wrapClass: 'fade-out' });
 		setTimeout(() => this.setState({ wrapClass: 'fade-in', tab: label, tabColor: color }), 400)
 		this.setState({ navTab: label })
@@ -57,7 +58,7 @@ class App extends React.Component {
 			case 'resume':
 				return <div className={wrapClass} ><ResumeTab color={tabs[1].color} /></div>;
 			case 'projects':
-				return <div className={wrapClass} ><div className="blob" style={{ borderColor: tabColor }} /></div>;
+				return <div className={wrapClass} ><DivPlayground /></div>;
 			default:
 				return <div />
 		}
