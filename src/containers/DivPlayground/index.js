@@ -2,6 +2,7 @@ import React from 'react';
 import './styles.css';
 
 import Slider from '../../components/Slider';
+import SpaceSlider from '../../components/SpaceSlider';
 
 const containerTypes = ['div', 'button', 'span', 'input', 'p', 'a', 'ul', 'ol'];
 
@@ -23,7 +24,11 @@ class DivPlayground extends React.Component {
 				vLength: 0,
 				blur: 0,
 				spread: 0,
-			}
+			},
+			sizing: {
+				width: 50,
+				height: 50,
+			},
 		}
 	}
 
@@ -34,6 +39,9 @@ class DivPlayground extends React.Component {
 
 		if (boxShadow.active)
 			tempStyles.boxShadow = `${boxShadow.hLength}px ${boxShadow.vLength}px ${boxShadow.blur}px ${boxShadow.spread}px rgba(0,0,0,0.4)`
+
+		tempStyles.width = this.state.sizing.width;
+		tempStyles.height = this.state.sizing.height;
 
 		if (onlyEditable)
 			return tempStyles;
@@ -60,7 +68,7 @@ class DivPlayground extends React.Component {
 		let retVal = `${this.state.containerType}Class: {\n`;
 		Object.keys(styles).forEach((styleKey) => {
 			const wrapWithQuotes = typeof styles[styleKey] === 'string';
-			retVal += `  ${styleKey}: ${wrapWithQuotes && '\''}${styles[styleKey]}${wrapWithQuotes && '\''},\n`;
+			retVal += `  ${styleKey}: ${wrapWithQuotes ? '\'' : ''}${styles[styleKey]}${wrapWithQuotes ? '\'' : ''},\n`;
 		})
 		retVal += '}'
 		return retVal;
@@ -142,7 +150,7 @@ class DivPlayground extends React.Component {
 		const { containerType, stylesCopied } = this.state;
 		return (
 			<div id="playground-root">
-				<a id="playground-title" href="#playground-root">div playground</a>
+				<a id="playground-title" href="#playground-root">{containerType} playground</a>
 				<div className="playground-horiz-panel">
 					{containerTypes.map((cot) => (
 						<div
@@ -226,6 +234,24 @@ class DivPlayground extends React.Component {
 							value={this.state.boxShadow.spread}
 							onChange={(event) => this.nestedStateChange('boxShadow', 'spread', event.target.value)}
 						/>
+					</div>
+					<div className="control-container">
+						<h3 className="control-header">sizing</h3>
+						<Slider
+							title="width"
+							min={0}
+							max={400}
+							value={this.state.sizing.width}
+							onChange={(event) => this.nestedStateChange('sizing', 'width', parseInt(event.target.value))}
+						/>
+						<Slider
+							title="height"
+							min={0}
+							max={250}
+							value={this.state.sizing.height}
+							onChange={(event) => this.nestedStateChange('sizing', 'height', parseInt(event.target.value))}
+						/>
+						<SpaceSlider title="padding" />
 					</div>
 				</div>
 			</div>
