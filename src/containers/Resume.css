@@ -3,6 +3,7 @@
 	display: flex;
 	justify-content: center;
 	display: flex;
+	background: var(--background-color);
 }
 
 .resume-map-container {

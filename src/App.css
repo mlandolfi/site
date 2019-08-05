@@ -8,12 +8,12 @@
 }
 
 .app-root {
-	background-color: var(--background-color);
+	/*background-color: var(--background-color);*/
 	/*background-color: rgba(53, 95, 150, 0.4);*/
 	font-family: 'Fugaz One', cursive;
 	letter-spacing: 1px;
 	scroll-behavior: smooth;
-}0D3C55
+}
 
 .header {
 	/*background-color: #272727;*/
