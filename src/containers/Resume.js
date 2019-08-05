@@ -99,6 +99,13 @@ export default class Resume extends React.Component {
 					</div>
 				</div>
 				<div className="resume-content" >
+					<a
+						id="resume-download"
+						download="Mike_Landolfi_Resume"
+						href={require('../assets/resume.pdf')}
+					>
+						click to download resume as a pdf
+					</a>
 					<h1 className="resume-section-title" ref={(node) => {sections[0].ref = node}} >experience</h1>
 					<div className="experience-timeline" >
 						<div id="timeline-line" />
