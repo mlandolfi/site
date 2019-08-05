@@ -5,7 +5,7 @@ export default function MapLocation(props) {
 	// props.color, props.label, props.onClick
 	return (
 		<div
-			style={{ color: props.selected ? '#fff' : props.color, zIndex: 10 }}
+			style={{ color: props.selected ? 'rgba(255, 255, 255, 0.6)' : props.color, zIndex: 10 }}
 			className="map-location-root"
 			onClick={props.onClick}
 		>

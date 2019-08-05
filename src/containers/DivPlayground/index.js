@@ -5,10 +5,25 @@ import Slider from '../../components/Slider';
 import SpaceSlider from '../../components/SpaceSlider';
 
 const containerTypes = ['div', 'button', 'span', 'input', 'p', 'a', 'ul', 'ol'];
+const cursors = ['auto', 'default', 'move', 'pointer', 'text', 'wait', 'zoom-in', 'zoom-out']
 
-const defaultStyles = {
-	
-}
+const defaultStyles = {};
+
+const presets = [
+	{
+		label: 'clickDiv',
+		style: {
+			padding: 10,
+			cursor: 'pointer',
+			borderRadius: 4,
+			backgroundColor: '#fff',
+			textTransform: 'uppercase',
+			// border: 'none',
+			// font: 'inherit',
+			// outline: 'inherit',
+		},
+	},
+]
 
 class DivPlayground extends React.Component {
 
@@ -19,29 +34,48 @@ class DivPlayground extends React.Component {
 			stylesCopied: '',
 
 			boxShadow: {
-				active: true,
+				active: false,
 				hLength: 0,
 				vLength: 0,
 				blur: 0,
 				spread: 0,
 			},
 			sizing: {
+				active: true,
 				width: 50,
 				height: 50,
+			},
+			cursor: {
+				active: false,
+				type: 'default',
+			},
+			padding: {
+				active: false,
+				value: '',
+			},
+			margin: {
+				active: false,
+				value: '',
 			},
 		}
 	}
 
 	composeStyles = (onlyEditable=false) => {
-		const { boxShadow } = this.state;
+		const { boxShadow, sizing, cursor } = this.state;
 
 		const tempStyles = { backgroundColor: '#fff' };
 
 		if (boxShadow.active)
 			tempStyles.boxShadow = `${boxShadow.hLength}px ${boxShadow.vLength}px ${boxShadow.blur}px ${boxShadow.spread}px rgba(0,0,0,0.4)`
 
-		tempStyles.width = this.state.sizing.width;
-		tempStyles.height = this.state.sizing.height;
+		if (sizing.active) {
+			tempStyles.width = sizing.width;
+			tempStyles.height = sizing.height;
+		}
+
+		if (cursor.active) {
+			tempStyles.cursor = cursor.type;
+		}
 
 		if (onlyEditable)
 			return tempStyles;
@@ -129,6 +163,10 @@ class DivPlayground extends React.Component {
 		this.setState({ [key]: Object.assign({}, this.state[key], { [secondKey]: value }) });
 	}
 
+	activate = (styleKey) => (event) => {
+		this.setState({ [styleKey]: Object.assign({}, this.state[styleKey], { active: !this.state[styleKey].active }) });
+	}
+
 	copyStyle = (id) => () => {
 		const element = document.getElementById(id)
 		element.select();
@@ -148,6 +186,7 @@ class DivPlayground extends React.Component {
 
 	render() {
 		const { containerType, stylesCopied } = this.state;
+		console.log(this.state);
 		return (
 			<div id="playground-root">
 				<a id="playground-title" href="#playground-root">{containerType} playground</a>
@@ -159,6 +198,15 @@ class DivPlayground extends React.Component {
 							onClick={this.changeStateEvent('containerType', cot)}
 						>
 							{`${cot}`}
+						</div>
+						))}
+				</div>
+				<div className="playground-horiz-panel">
+					{presets.map((preBoi) => (
+						<div
+							style={preBoi.style}
+						>
+							{preBoi.label}
 						</div>
 						))}
 				</div>
@@ -205,7 +253,13 @@ class DivPlayground extends React.Component {
 				</div>
 				<div className="playground-horiz-panel">
 					<div className="control-container">
-						<h3 className="control-header">shadow</h3>
+						<h3
+							className="control-header"
+							className={`control-header ${this.state.boxShadow.active ? 'control-header-active' : ''}`}
+							onClick={this.activate('boxShadow')}
+						>
+							shadow
+						</h3>
 						<Slider
 							title="h-length"
 							min={-50}
@@ -236,7 +290,33 @@ class DivPlayground extends React.Component {
 						/>
 					</div>
 					<div className="control-container">
-						<h3 className="control-header">sizing</h3>
+						<h3
+							className={`control-header ${this.state.cursor.active ? 'control-header-active' : ''}`}
+							onClick={this.activate('cursor')}
+						>
+							cursor
+						</h3>
+						<div id="cursors-container">
+						{cursors.map((cursor) => (
+							<div
+								style={{
+									cursor,
+								}}
+								onClick={(event) => {this.nestedStateChange('cursor', 'type', cursor)}}
+								className={`cursor-box ${this.state.cursor.type === cursor ? 'cursor-box-active' : ''}`}
+							>
+								{cursor}
+							</div>
+							))}
+						</div>
+					</div>
+					<div className="control-container">
+						<h3
+							className={`control-header ${this.state.sizing.active ? 'control-header-active' : ''}`}
+							onClick={this.activate('sizing')}
+						>
+							sizing
+						</h3>
 						<Slider
 							title="width"
 							min={0}
@@ -251,7 +331,6 @@ class DivPlayground extends React.Component {
 							value={this.state.sizing.height}
 							onChange={(event) => this.nestedStateChange('sizing', 'height', parseInt(event.target.value))}
 						/>
-						<SpaceSlider title="padding" />
 					</div>
 				</div>
 			</div>

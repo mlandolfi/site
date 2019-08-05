@@ -104,4 +104,32 @@
 .control-header {
 	text-transform: uppercase;
 	margin: 0px;
+	cursor: pointer;
+}
+
+.control-header-active {
+	color: var(--third-color);
+	text-shadow: 0px 0px 4px #000;
+}
+
+#cursors-container {
+	display: flex;
+	flex-wrap: wrap;
+	max-width: 220px;
+}
+
+.cursor-box {
+	width: 90px;
+	height: 60px;
+	border: 2px solid black;
+	margin: 1px;
+	text-transform: uppercase;
+	text-align: center;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.cursor-box-active {
+	border: 2px solid var(--third-color) !important;
 }

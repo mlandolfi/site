@@ -1,7 +1,7 @@
 
 .resume-root {
 	display: flex;
-	justify-content: space-around;
+	justify-content: center;
 	display: flex;
 }
 
@@ -10,7 +10,7 @@
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	width: 170px;
+	min-width: 300px;
 }
 
 .resume-map {
@@ -32,7 +32,7 @@
 
 .resume-content {
 	padding: 20px;
-	max-width: 900px;
+	max-width: 1150px;
 }
 
 .resume-section-title {
@@ -83,15 +83,15 @@
 	display: flex;
 	align-items: center;
 	font-weight: 500;
-	color: var(--background-color);
+	color: rgba(255, 255, 255, 0.6);
 	background-color: var(--second-color);
 	z-index: 10;
 }
 
 #coursework-container {
 	width: 95%;
-	max-width: 720px;
-	margin-bottom: 40px;
+	max-width: 900px;
+	margin-bottom: 70px;
 }
 
 #coursework-header {
@@ -107,7 +107,7 @@
 .coursework-text-left {
 	display: flex;
 	align-items: center;
-	width: 280px;
+	width: 330px;
 }
 
 .coursework-text-right {

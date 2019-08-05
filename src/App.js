@@ -8,7 +8,7 @@ import DivPlayground from './containers/DivPlayground';
 
 const tabs = [
 	{ label: 'about', styleId: 'nav-first', color: '#14a76c' },
-	{ label: 'resume', styleId: 'nav-second', color: '#303a75' },
+	{ label: 'resume', styleId: 'nav-second', color: '#001428' },
 	{ label: 'projects', styleId: 'nav-third', color: '#ffe400' },
 ]
 
@@ -36,9 +36,9 @@ class App extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			navTab: tabs[2].label,
-			tab: tabs[2].label,
-			tabColor: tabs[2].color,
+			navTab: tabs[1].label,
+			tab: tabs[1].label,
+			tabColor: tabs[1].color,
 			wrapClass: 'fade-in',
 		}
 	}
@@ -58,7 +58,7 @@ class App extends React.Component {
 			case 'resume':
 				return <div className={wrapClass} ><ResumeTab color={tabs[1].color} /></div>;
 			case 'projects':
-				return <div className={wrapClass} ><DivPlayground /></div>;
+				return <div className={wrapClass} ><div className="blob" style={{ borderColor: tabColor }} /></div>;
 			default:
 				return <div />
 		}
@@ -97,7 +97,6 @@ class App extends React.Component {
 						</div>
 					</div>
 					{this.renderTab()}
-					<div style={{ height: 1000 }} />
 				</div>
 			);
 	}
