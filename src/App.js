@@ -3,14 +3,8 @@ import './App.css';
 
 import Nav from './components/Nav'
 
-import ResumeTab from './containers/Resume'
-import DivPlayground from './containers/DivPlayground';
-
-const tabs = [
-	{ label: 'about', styleId: 'nav-first', color: '#14a76c' },
-	{ label: 'resume', styleId: 'nav-second', color: '#001428' },
-	{ label: 'projects', styleId: 'nav-third', color: '#ffe400' },
-]
+import ResumeTab from './containers/Resume';
+import AboutTab from './containers/About';
 
 /* Quotes:
 
@@ -35,68 +29,74 @@ class App extends React.Component {
 
 	constructor(props) {
 		super(props);
+		this.rootRef = null;
 		this.state = {
-			navTab: tabs[1].label,
-			tab: tabs[1].label,
-			tabColor: tabs[1].color,
+			tab: 'about',
 			wrapClass: 'fade-in',
 		}
 	}
 
-	handleNavClick = (label, color) => {
+	handleNavClick = (label) => {
 		if (this.state.wrapClass === 'fade-out' || this.state.tab === label)	return;
 		this.setState({ wrapClass: 'fade-out' });
-		setTimeout(() => this.setState({ wrapClass: 'fade-in', tab: label, tabColor: color }), 400)
-		this.setState({ navTab: label })
+		setTimeout(() => {
+			this.setState({ wrapClass: 'fade-in', tab: label });
+			window.scrollTo(0,0);
+		}, 400);
 	}
 
 	renderTab = () => {
-		const { tab, wrapClass, tabColor } = this.state;
+		const { tab } = this.state;
 		switch(tab) {
 			case 'about':
-				return <div className={wrapClass} ><div className="blob" style={{ borderColor: tabColor }} /></div>;
+				return <AboutTab />;
 			case 'resume':
-				return <div className={wrapClass} ><ResumeTab color={tabs[1].color} /></div>;
+				return <ResumeTab color={"black"} />;
 			case 'projects':
-				return <div className={wrapClass} ><div className="blob" style={{ borderColor: tabColor }} /></div>;
+				return <div className="blob" />;
 			default:
 				return <div />
 		}
 	}
 
 	render() {
-		const { navTab, tabColor } = this.state;
 		return (
 				<div
 					className="app-root"
+					ref={(node) => {this.rootRef = node}}
 				>
-				<div style={{ height: '100%' }} >
-					<h1
-						style={{
-							color: tabColor,
-						}}
-						className="name-header"
-					>
-						Michael Landolfi
-					</h1>
-					</div>
 					<div className="header" >
 						<div
 							className="nav-header"
 						>
-							{tabs.map((tab) => (
-								<Nav
-									key={`nav-${tab.label}`}
-									styleId={tab.styleId}
-									label={tab.label}
-									color={tab.color}
-									onClick={this.handleNavClick}
-									selected={navTab===tab.label}
-								/>
-								))}
+							<h2
+								className="on-text nav-button"
+								style={{ marginLeft: 30 }}
+								onClick={() => this.handleNavClick('about', 'red')}
+							>
+								About
+							</h2>
+							<h2
+								className="on-text nav-button"
+								style={{ marginLeft: 30 }}
+								onClick={() => this.handleNavClick('resume', 'red')}
+							>
+								Resume
+							</h2>
+							<h2
+								className="on-text nav-button"
+								style={{ marginLeft: 30 }}
+								onClick={() => this.handleNavClick('projects', 'red')}
+							>
+								Projects
+							</h2>
 						</div>
 					</div>
-					{this.renderTab()}
+					<div
+						className={this.state.wrapClass}
+					>
+						{this.renderTab()}
+					</div>
 				</div>
 			);
 	}

@@ -2,13 +2,14 @@ import React from 'react';
 import './Resume.css';
 
 import MapLocation from '../components/MapLocation';
+import { DownloadIcon } from '../assets/icons';
 
 const sections = [
-	{ label: 'experience', ref: null },
-	{ label: 'education', ref: null },
-	{ label: 'skills', ref: null },
-	{ label: 'awards', ref: null },
-	{ label: 'leadership', ref: null },
+	{ label: 'Experience', ref: null },
+	{ label: 'Education', ref: null },
+	{ label: 'Skills', ref: null },
+	{ label: 'Awards', ref: null },
+	{ label: 'Leadership', ref: null },
 ]
 
 const Dash = (props) => (<div className="baby-dash" />)
@@ -18,7 +19,7 @@ export default class Resume extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = { mapOn: sections[0].label, mapOnIndex: 0 };
-		this.scrollMargin = 200;
+		this.scrollMargin = 300;
 		this.scrollLock = false;
 	}
 
@@ -72,7 +73,7 @@ export default class Resume extends React.Component {
 				left: 0,
 				behavior: 'smooth'
 			});
-			setTimeout(() => {this.scrollLock = false}, 500)
+			setTimeout(() => {this.scrollLock = false}, 800)
 		}
 	}
 
@@ -103,75 +104,109 @@ export default class Resume extends React.Component {
 						id="resume-download"
 						download="Mike_Landolfi_Resume"
 						href={require('../assets/resume.pdf')}
+						style={{ display: 'flex', alignItems: 'center', textDecoration: 'none', justifyContent: 'center' }}
 					>
-						click to download resume as a pdf
+						<DownloadIcon color="#22A29F" size="30" />
+						<p
+							className="tighten-text"
+							style={{ marginLeft: 10 }}
+						>
+							click to download resume as a pdf
+						</p>
 					</a>
-					<h1 className="resume-section-title" ref={(node) => {sections[0].ref = node}} >experience</h1>
+					<h1 className="resume-section-title" ref={(node) => {sections[0].ref = node}} >{sections[0].label}</h1>
 					<div className="experience-timeline" >
 						<div id="timeline-line" />
 						<div className="timeline-section">
 							<div className="timeline-ball">
-								summer 2018
+								Summer 2019
 							</div>
 							<div className="on-text" >
 								<h1 className="on-text" >
 									Quicken - Software Engineer Intern, Menlo Park, CA
 								</h1>
 								<h4 className="on-text" >
-									may 2019 ~ august 2019
+									May 2019 ~ August 2019
 								</h4>
 								<ul className="on-text" >
 									<div style={{margin: 8}}/>
 									<li>
-										worked with designers and developers to centralize a theme across the codebase
+										Worked with multidisciplinary teams to centralize a theme across the codebase
 										for Quicken's web applications, and implemented new infrastructure for creating and
-										implementing new themes on the app
+										adding new themes on the app
 									</li>
 									<div style={{margin: 8}}/>
 									<li>
-										rebuilt category and tag selection controls across the app from scratch to improve
+										Rebuilt category and tag selection controls throughout the app from scratch to improve
 										usability as well as code extensability
 									</li>
 									<div style={{margin: 8}}/>
 									<li>
-										constructed the landing page and beta registration flow for Quicken's new web app
+										Constructed the landing page and beta registration flow for Quicken's next generation
+										web app
 									</li>
 									<div style={{margin: 8}}/>
 									<li>
-										made improvements to the entire react web app ranging from minor bug fixes
+										Made improvements to the entire react web app ranging from minor bug fixes
 										to logical restructuring and performance improvements
 									</li>
 									<div style={{margin: 8}}/>
 								</ul>
 							</div>
 						</div>
-						<div style={{ height: 70 }} />
+						<div style={{ height: 90 }} />
 						<div className="timeline-section" >
-							<div className="timeline-ball" style={{ top: 200 }} >
-								summer 2017
+							<div className="timeline-ball" >
+								Summer 2018
 							</div>
 							<div className="on-text">
 								<h1 className="on-text" >
 									Quicken - Software Engineer Intern, Menlo Park, CA
 								</h1>
 								<h4 className="on-text" >
-									june 2018 ~ august 2018
+									June 2018 ~ August 2018
 								</h4>
 								<ul className="on-text" >
 									<div style={{margin: 8}}/>
 									<li>
-										constructed income tracking feature utilizing several libraries including
-										amcharts, redux, material-ui, and other existing internal tools
+										Constructed income tracking feature utilizing several libraries including
+										amCharts, Redux, Material-UI, and other existing internal components
 									</li>
 									<div style={{ margin: 8 }}/>
 									<li>
-										led team of interns with diverse experience in creating a new automated 
+										Led team of interns with diverse experience in creating a new automated 
 										savings feature
 									</li>
 									<div style={{ margin: 8 }}/>
 									<li>
-										made improvements to the entire react web app ranging from minor bug fixes
+										Made improvements to the entire react web app ranging from minor bug fixes
 										to logical restructuring and performance improvements
+									</li>
+								</ul>
+							</div>
+						</div>
+						<div style={{ height: 90 }} />
+						<div className="timeline-section" >
+							<div className="timeline-ball" >
+								Summer 2017
+							</div>
+							<div className="on-text">
+								<h1 className="on-text" >
+									Zeal - Growth Acquisition Intern, San Francisco, CA
+								</h1>
+								<h4 className="on-text" >
+									July 2017 ~ August 2017
+								</h4>
+								<ul className="on-text" >
+									<div style={{margin: 8}}/>
+									<li>
+										Designed ​ and ran advertisements on Google AdWords and Facebook
+										Ads to advertise Zeal’s principle home tutoring product
+									</li>
+									<div style={{ margin: 8 }}/>
+									<li>
+										Created ​ and A/B tested differing landing pages to assess elements
+										leading to higher throughput by analyzing user traffic data in Excel
 									</li>
 								</ul>
 							</div>
@@ -183,13 +218,13 @@ export default class Resume extends React.Component {
 					<div style={{ paddingLeft: 20, paddingRight: 20 }} >
 						<div>
 							<h1 className="on-text">
-								b.s. in computer science, expected may 2020
+								B.S. in Computer Science, expected May 2020
 							</h1>
 							<h3 className="on-text">
-								rensselaer polytechnic institute, troy, ny
+								Rensselaer Polytechnic Institute, Troy, NY
 							</h3>
 							<h3 className="on-text">
-								gpa: 3.84
+								GPA: 3.84
 							</h3>
 							<div style={{ height: 10 }} />
 							<div id="coursework-container">
@@ -197,38 +232,38 @@ export default class Resume extends React.Component {
 									className="on-text"
 									id="coursework-header"
 								>
-									relevant coursework
+									Relevant Coursework
 								</h2>
 								<div>
 									<div className="coursework-row">
-										<h3 className="coursework-text-left on-text"><Dash />data structures</h3>
-										<h3 className="coursework-text-right on-text"><Dash />principles of software</h3>
+										<h3 className="coursework-text-left on-text"><Dash />Data Structures</h3>
+										<h3 className="coursework-text-right on-text"><Dash />Principles of Software</h3>
 									</div>
 									<div className="coursework-row">
-										<h3 className="coursework-text-left on-text"><Dash />discrete mathematics</h3>
-										<h3 className="coursework-text-right on-text"><Dash />computer organization</h3>
+										<h3 className="coursework-text-left on-text"><Dash />Discrete Mathematics</h3>
+										<h3 className="coursework-text-right on-text"><Dash />Computer Organization</h3>
 									</div>
 									<div className="coursework-row">
-										<h3 className="coursework-text-left on-text"><Dash />operating systems</h3>
-										<h3 className="coursework-text-right on-text"><Dash />database systems (fall 2019)</h3>
+										<h3 className="coursework-text-left on-text"><Dash />Operating Systems</h3>
+										<h3 className="coursework-text-right on-text"><Dash />Database Systems (Fall 2019)</h3>
 									</div>
 									<div className="coursework-row">
-										<h3 className="coursework-text-left on-text"><Dash />intro to ai</h3>
-										<h3 className="coursework-text-right on-text"><Dash />programming languages (fall 2019)</h3>
+										<h3 className="coursework-text-left on-text"><Dash />Intro to AI</h3>
+										<h3 className="coursework-text-right on-text"><Dash />Programming Languages (Fall 2019)</h3>
 									</div>
 									<div className="coursework-row">
-										<h3 className="coursework-text-left on-text"><Dash />intro to algorithms</h3>
-										<h3 className="coursework-text-right on-text"><Dash />large scale programming & testing (fall 2019)</h3>
+										<h3 className="coursework-text-left on-text"><Dash />Intro to Algorithms</h3>
+										<h3 className="coursework-text-right on-text"><Dash />Large Scale Programming & Testing (Fall 2019)</h3>
 									</div>
 								</div>
 							</div>
 						</div>
 						<div>
 							<h1 className="on-text">
-								menlo atherton high school, atherton, ca
+								Menlo Atherton High School, Atherton, CA
 							</h1>
 							<h3 className="on-text">
-								graduated in 2017
+								Graduated in 2017
 							</h3>
 						</div>
 					</div>
@@ -236,54 +271,51 @@ export default class Resume extends React.Component {
 					<h1 className="resume-section-title" ref={(node) => {sections[2].ref = node}} >{sections[2].label}</h1>
 					<div style={{ paddingLeft: 20, paddingRight: 20 }}>
 						<h2 className="on-text skills-text">
-							<b>proficient in</b>: javascript - reactjs - python - html - css - c - c++ - java
+							<b>Proficient in</b>: JavaScript - React.JS - Python - HTML - CSS - C - C++ - Java
 						</h2>
 						<h2 className="on-text skills-text">
-							<b>Familiar with</b>: axios - redux - npm - material-ui - react-bootstrap - selenium - react router
+							<b>Familiar with</b>: Axios - Redux - NPM - Material-UI - React-Bootstrap - Selenium - React Router
 						</h2>
 						<h2 className="on-text skills-text">
-							<b>experience with</b>: git version control - http request methods - scrum methodologies - agile development
+							<b>Experience with</b>: Git Version Control - HTTP Request Methods - Scrum Methodologies - Agile Development
 						</h2>
 						<h2 className="on-text skills-text">
-							<b>excellent</b>: oral and written communication skills
+							<b>Excellent</b>: Oral and written communication skills
 						</h2>
 					</div>
 					<div style={{ height: 80 }} />
 					<h1 className="resume-section-title" ref={(node) => {sections[3].ref = node}} >{sections[3].label}</h1>
 					<div style={{ paddingLeft: 20, paddingRight: 20 }}>
 						<h2 className="on-text skills-text">
-							<b>eagle scout</b>, december 2016
+							<b>Eagle Scout</b>, December 2016
 						</h2>
 						<h2 className="on-text skills-text">
-							<b>member of the order of the arrow</b>, boy scout honor society, 2013
+							<b>Member of the Order of the Arrow</b>, Boy Scout Honor Society, 2013
 						</h2>
 						<h2 className="on-text skills-text">
-							<b>dean's honor list</b>, fall 2017 - spring 2019
+							<b>Dean's Honor List</b>, Fall 2017 - Spring 2019
 						</h2>
 						<h2 className="on-text skills-text">
-							<b>rensselaer leadership award scholarship</b>
-						</h2>
-						<h2 className="on-text skills-text">
-							<b>ap scholar with distinction</b>, 2016 & 2017
+							<b>Rensselaer Leadership Award Scholarship</b> Fall 2017 - Fall 2019
 						</h2>
 					</div>
 					<div style={{ height: 80 }} />
 					<h1 className="resume-section-title" ref={(node) => {sections[4].ref = node}} >{sections[4].label}</h1>
 					<div style={{ paddingLeft: 20, paddingRight: 20 }}>
 						<h2 className="on-text skills-text">
-							<b>Senior Patrol Leader:</b> primary scout leader elected by the troop to lead all
+							<b>Senior Patrol Leader:</b> Primary scout leader elected by the troop to lead all
 							meetings, events, and the patrol leaders' council
 						</h2>
 						<h2 className="on-text skills-text">
-							<b>Patrol Leader:</b> elected leader of a patrol of scouts that is responsible
+							<b>Patrol Leader:</b> Elected leader of a patrol of scouts that is responsible
 							for representing and managing the patrol at meetings and events
 						</h2>
 						<h2 className="on-text skills-text">
-							<b>eagle scout project:</b> directed 15+ people in the construction of an outdoor
+							<b>Eagle Scout Project:</b> Directed 15+ people in the construction of an outdoor
 							eating area for menlo-atherton high school
 						</h2>
 						<h2 className="on-text skills-text">
-							<b>sigma chi (ΣΧ) Assistant recruitment chair:</b> help plan and put on recruitment
+							<b>Sigma Chi Assistant Recruitment Chair:</b> Help plan and put on recruitment
 							activities and events
 						</h2>
 					</div>
