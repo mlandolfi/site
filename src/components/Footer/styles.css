@@ -1,0 +1,15 @@
+
+.footer-root {
+	background-color: #212121;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin: auto;
+}
+
+.footer-vert-divider {
+	width: 1px;
+	height: 40px;
+	background-color: #fff;
+	margin: 0px 20px;
+}

@@ -1,6 +1,8 @@
 import React from 'react';
 import './styles.css'
 
+import { ArrowDownIcon } from '../../assets/icons';
+
 export default class About extends React.Component {
 
 	constructor(props) {
@@ -18,6 +20,11 @@ export default class About extends React.Component {
 						Wisdom begins in Wonder <br/> -Socrates
 					</p>
 				</span>
+				<a href="#about-info-container">
+					<div id="about-arrow-down" className="flex-center">
+						<ArrowDownIcon color="#000" size="50" />
+					</div>
+				</a>
 				<div id="about-info-container">
 					<h1 className="on-text" id="about-title">
 						About

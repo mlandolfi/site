@@ -11,7 +11,7 @@
 }
 
 #about-photo-text {
-	font-size: 10rem;
+	font-size: 8rem;
 	position: absolute;
 	top: 200px;
 	left: 0;
@@ -27,9 +27,21 @@
 	margin: auto;
 }
 
+#about-arrow-down {
+	width: 80px;
+	height: 60px;
+	background-color: var(--background-color);
+	position: absolute;
+	top: calc(100vh - 60px);
+	right: 200px;
+	border-top-left-radius: 2px;
+	border-top-right-radius: 2px;
+	cursor: pointer;
+}
+
 #about-info-container {
 	width: 100%;
-	height: calc(100vh);
+	height: calc(100vh - 75px);	/*75px is footer height*/
 	background-color: #f2efe0;
 }
 

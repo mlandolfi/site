@@ -6,6 +6,8 @@ import Nav from './components/Nav'
 import ResumeTab from './containers/Resume';
 import AboutTab from './containers/About';
 
+import Footer from './components/Footer';
+
 /* Quotes:
 
 - Wisdom begins in Wonder -Socrates
@@ -23,6 +25,8 @@ import AboutTab from './containers/About';
 - If you ask me what I came into this life to do, I will tell you: I came to live out loud -Emile Zola
 
 - Whatever you are, be a good one -William Makepeace Thackeray
+
+- If I had asked people what they wanted, they would have said faster horses - Henry Ford
 */
 
 class App extends React.Component {
@@ -97,6 +101,7 @@ class App extends React.Component {
 					>
 						{this.renderTab()}
 					</div>
+					<Footer />
 				</div>
 			);
 	}

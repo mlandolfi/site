@@ -9,7 +9,6 @@
 	/*font-family: 'Fugaz One', cursive;*/
 	font-family: 'Open Sans', sans-serif;
 	letter-spacing: 1px;
-	scroll-behavior: smooth;
 	color: #272727;
 }
 
@@ -40,12 +39,6 @@
 	margin: auto;
 }
 
-.on-text {
-	color: var(--text-color);
-	/*text-transform: uppercase;*/
-	margin: 0;
-	font-weight: 500;
-}
 
 .fade-in {
 	-webkit-animation: fadein 0.4s; /* Safari, Chrome and Opera > 12.1 */
@@ -98,4 +91,21 @@
 ::-webkit-scrollbar {
     width: 0px;  /* Remove scrollbar space */
     background: transparent;  /* Optional: just make scrollbar invisible */
+}
+
+
+
+/*Below are general classes used across the app*/
+
+.on-text {
+	color: var(--text-color);
+	/*text-transform: uppercase;*/
+	margin: 0;
+	font-weight: 500;
+}
+
+.flex-center {
+	display: flex;
+	align-items: center;
+	justify-content: center;
 }

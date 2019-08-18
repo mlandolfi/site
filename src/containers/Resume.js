@@ -319,7 +319,7 @@ export default class Resume extends React.Component {
 							activities and events
 						</h2>
 					</div>
-					<div style={{ height: 450 }} />
+					<div style={{ height: 350 }} />
 				</div>
 			</div>
 			);
