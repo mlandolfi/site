@@ -1,8 +1,8 @@
 import React from 'react';
-import './Resume.css';
+import './styles.css';
 
-import MapLocation from '../components/MapLocation';
-import { DownloadIcon } from '../assets/icons';
+import MapLocation from '../../components/MapLocation';
+import { DownloadIcon } from '../../assets/icons';
 
 const sections = [
 	{ label: 'Experience', ref: null },
@@ -103,7 +103,7 @@ export default class Resume extends React.Component {
 					<a
 						id="resume-download"
 						download="Mike_Landolfi_Resume"
-						href={require('../assets/resume.pdf')}
+						href={require('../../assets/resume.pdf')}
 						style={{ display: 'flex', alignItems: 'center', textDecoration: 'none', justifyContent: 'center' }}
 					>
 						<DownloadIcon color="#22A29F" size="30" />

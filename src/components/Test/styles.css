@@ -1,0 +1,31 @@
+
+.test-root {
+	position: relative;
+	width: 400px;
+	height: 200px;
+	margin: auto;
+	border: 1px solid navy;
+}
+
+.test-full-block {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+	top: 0;
+}
+
+.test-slide {
+	width: 0%;
+	height: 100%;
+	background-color: navy;
+	color: #fff;
+	transition: width 0.4s
+}
+
+.test-slide-hover {
+	width: 100%;
+}

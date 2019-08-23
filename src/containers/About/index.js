@@ -10,6 +10,7 @@ export default class About extends React.Component {
 	}
 
 	render() {
+		// Wisdom begins in Wonder <br/> -Socrates
 		return (
 			<div id="about-root">
 				<img id="about-photo" src={require('../../assets/other.jpg')} alt="beach" />
@@ -17,7 +18,7 @@ export default class About extends React.Component {
 					Mike Landolfi
 					<div style={{ height: 30 }} />
 					<p className="on-text" id="about-photo-quote">
-						Wisdom begins in Wonder <br/> -Socrates
+						Web Devloper
 					</p>
 				</span>
 				<a href="#about-info-container">

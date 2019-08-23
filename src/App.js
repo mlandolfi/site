@@ -5,6 +5,9 @@ import Nav from './components/Nav'
 
 import ResumeTab from './containers/Resume';
 import AboutTab from './containers/About';
+import Test from './components/Test';
+import MineGame from './containers/MineGame';
+import SvgBuilder from './containers/SvgBuilder';
 
 import Footer from './components/Footer';
 
@@ -35,7 +38,7 @@ class App extends React.Component {
 		super(props);
 		this.rootRef = null;
 		this.state = {
-			tab: 'about',
+			tab: 'projects',
 			wrapClass: 'fade-in',
 		}
 	}
@@ -51,13 +54,15 @@ class App extends React.Component {
 
 	renderTab = () => {
 		const { tab } = this.state;
+		if (window.location.search === '?mine-game')
+			return <MineGame />
 		switch(tab) {
 			case 'about':
 				return <AboutTab />;
 			case 'resume':
 				return <ResumeTab color={"black"} />;
 			case 'projects':
-				return <div className="blob" />;
+				return <SvgBuilder />;
 			default:
 				return <div />
 		}
