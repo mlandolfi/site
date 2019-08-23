@@ -38,7 +38,7 @@ class App extends React.Component {
 		super(props);
 		this.rootRef = null;
 		this.state = {
-			tab: 'projects',
+			tab: 'resume',
 			wrapClass: 'fade-in',
 		}
 	}

@@ -137,12 +137,12 @@ export default class Resume extends React.Component {
 									</li>
 									<div style={{margin: 8}}/>
 									<li>
-										Rebuilt category and tag selection controls throughout the app from scratch to improve
+										Rebuilt category and tag selection controls throughout the app to improve
 										usability as well as code extensability
 									</li>
 									<div style={{margin: 8}}/>
 									<li>
-										Constructed the landing page and beta registration flow for Quicken's next generation
+										Constructed the landing page and beta user registration flow for Quicken's next generation
 										web app
 									</li>
 									<div style={{margin: 8}}/>
@@ -237,11 +237,11 @@ export default class Resume extends React.Component {
 								<div>
 									<div className="coursework-row">
 										<h3 className="coursework-text-left on-text"><Dash />Data Structures</h3>
-										<h3 className="coursework-text-right on-text"><Dash />Principles of Software</h3>
+										<h3 className="coursework-text-right on-text"><Dash />Computer Organization</h3>
 									</div>
 									<div className="coursework-row">
 										<h3 className="coursework-text-left on-text"><Dash />Discrete Mathematics</h3>
-										<h3 className="coursework-text-right on-text"><Dash />Computer Organization</h3>
+										<h3 className="coursework-text-right on-text"><Dash />Software Documentation & Design</h3>
 									</div>
 									<div className="coursework-row">
 										<h3 className="coursework-text-left on-text"><Dash />Operating Systems</h3>
@@ -255,6 +255,19 @@ export default class Resume extends React.Component {
 										<h3 className="coursework-text-left on-text"><Dash />Intro to Algorithms</h3>
 										<h3 className="coursework-text-right on-text"><Dash />Large Scale Programming & Testing (Fall 2019)</h3>
 									</div>
+									<div className="coursework-row">
+										<h3 className="coursework-text-left on-text"><Dash />Principles of Software</h3>
+									</div>
+								</div>
+								<div style={{ height: 20 }} />
+								<h2
+									className="on-text"
+									id="coursework-header"
+								>
+									Undergraduate Mentoring Experince
+								</h2>
+								<div>
+										<h3 className="coursework-text-left on-text"><Dash />Intro to Algorithms - Fall 2019</h3>
 								</div>
 							</div>
 						</div>
@@ -274,13 +287,12 @@ export default class Resume extends React.Component {
 							<b>Proficient in</b>: JavaScript - React.JS - Python - HTML - CSS - C - C++ - Java
 						</h2>
 						<h2 className="on-text skills-text">
-							<b>Familiar with</b>: Axios - Redux - NPM - Material-UI - React-Bootstrap - Selenium - React Router
+							<b>Familiar with</b>: Axios - Redux - npm - Material-UI - React-Bootstrap - Selenium - React Router - amCharts
 						</h2>
 						<h2 className="on-text skills-text">
-							<b>Experience with</b>: Git Version Control - HTTP Request Methods - Scrum Methodologies - Agile Development
-						</h2>
-						<h2 className="on-text skills-text">
-							<b>Excellent</b>: Oral and written communication skills
+							<b>Experience with</b>: Git Version Control - HTTP Requests - RESTful && GraphQL APIs
+							- Scrum Methodologies - Agile Development
+
 						</h2>
 					</div>
 					<div style={{ height: 80 }} />
@@ -307,7 +319,7 @@ export default class Resume extends React.Component {
 							meetings, events, and the patrol leaders' council
 						</h2>
 						<h2 className="on-text skills-text">
-							<b>Patrol Leader:</b> Elected leader of a patrol of scouts that is responsible
+							<b>Patrol Leader:</b> Elected leader of a patrol of scouts and is responsible
 							for representing and managing the patrol at meetings and events
 						</h2>
 						<h2 className="on-text skills-text">
