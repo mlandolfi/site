@@ -5,12 +5,7 @@ import { ArrowDownIcon } from '../../assets/icons';
 
 export default class About extends React.Component {
 
-	constructor(props) {
-		super(props);
-	}
-
 	render() {
-		// Wisdom begins in Wonder <br/> -Socrates
 		return (
 			<div id="about-root">
 				<img id="about-photo" src={require('../../assets/other.jpg')} alt="beach" />
@@ -18,7 +13,7 @@ export default class About extends React.Component {
 					Mike Landolfi
 					<div style={{ height: 30 }} />
 					<p className="on-text" id="about-photo-quote">
-						Web Devloper
+						Web Developer
 					</p>
 				</span>
 				<a href="#about-info-container">
@@ -40,8 +35,23 @@ export default class About extends React.Component {
 						</div>
 						<div className="about-me-side" >
 							<p>
-								this is my about me
+								My name is Mike Landolfi and I'm currently in my third year of studying Computer Science
+								at Rensselaer Polytechnic Institute (RPI) in Troy, NY. Although I have only been at RPI
+								for three years, I am a standing Senior and will be graduating in May of 2020.
 							</p>
+							<p>
+								I'm most intrigued by front end development and constructing simple but powerful websites.
+								I have the most experience writing in React but also have a deep understanding of plain HTML and CSS.
+								In addition, I am very familiar with Redux as well as making requests to RESTful and GraphQL APIs.
+							</p>
+							<p>
+								When I'm not occupied with coursework or exploring my side projects you'll probably find me
+								enjoying the outdoors. I love being active and hiking or running, but am also content spending
+								an entire day at the beach enjoying the sun and surf.
+							</p>
+							<i style={{ textAlign: 'center', fontSize: 18 }}>
+								Wisdom begins in Wonder - Socrates
+							</i>
 						</div>
 					</div>
 				</div>

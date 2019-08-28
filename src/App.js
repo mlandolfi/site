@@ -9,7 +9,7 @@ import Test from './components/Test';
 import MineGame from './containers/MineGame';
 import SvgBuilder from './containers/SvgBuilder';
 
-import Footer from './components/Footer';
+import Footer, { FOOTER_HEIGHT } from './components/Footer';
 
 /* Quotes:
 
@@ -38,7 +38,7 @@ class App extends React.Component {
 		super(props);
 		this.rootRef = null;
 		this.state = {
-			tab: 'resume',
+			tab: 'about',
 			wrapClass: 'fade-in',
 		}
 	}
@@ -61,8 +61,8 @@ class App extends React.Component {
 				return <AboutTab />;
 			case 'resume':
 				return <ResumeTab color={"black"} />;
-			case 'projects':
-				return <SvgBuilder />;
+			case 'playground':
+				return <div style={{ height: `calc(100vh - ${FOOTER_HEIGHT}px)`, textAlign: 'center', fontSize: 36 }}>Under Construction</div>;
 			default:
 				return <div />
 		}
@@ -95,9 +95,9 @@ class App extends React.Component {
 							<h2
 								className="on-text nav-button"
 								style={{ marginLeft: 30 }}
-								onClick={() => this.handleNavClick('projects', 'red')}
+								onClick={() => this.handleNavClick('playground', 'red')}
 							>
-								Projects
+								Playground
 							</h2>
 						</div>
 					</div>

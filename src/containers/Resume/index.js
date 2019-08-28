@@ -10,6 +10,7 @@ const sections = [
 	{ label: 'Skills', ref: null },
 	{ label: 'Awards', ref: null },
 	{ label: 'Leadership', ref: null },
+	{ label: 'Projects', ref: null },
 ]
 
 const Dash = (props) => (<div className="baby-dash" />)
@@ -331,7 +332,45 @@ export default class Resume extends React.Component {
 							activities and events
 						</h2>
 					</div>
-					<div style={{ height: 350 }} />
+					<div style={{ height: 80 }} />
+					<h1 className="resume-section-title" ref={(node) => {sections[5].ref = node}} >{sections[5].label}</h1>
+					<div style={{ paddingLeft: 20, paddingRight: 20 }}>
+						<div className="resume-projects-container">
+							<div style={{ position: 'relative' }} >
+								<img
+									src={require('../../assets/MLR_for_website.png')}
+									className="resume-projects-image"
+								/>
+								<div className="resume-projects-image-overlay"></div>
+								</div>
+							<div style={{ textAlign: 'center', padding: '0px 35px' }}>
+								<p className="resume-projects-title">My Legacy Recipe</p>
+								<p className="resume-projects-body" >
+									Currently building out the front end for a recipe sharing website.
+									The site is a React.JS web application that communicates with a GraphQL
+									server for authentication and data management.
+								</p>
+							</div>
+						</div>
+						<div className="resume-projects-container">
+							<div style={{ textAlign: 'center', padding: '0px 35px' }}>
+								<p className="resume-projects-title">Personal Website</p>
+								<p className="resume-projects-body" >
+									Using only ReactJS, HTML, and custom CSS styling,
+									constructed a website to present my interactive resume and to use
+									as a sandbox for personal projects.
+								</p>
+							</div>
+							<div style={{ position: 'relative' }} >
+								<img
+									src={require('../../assets/PW_for_website.png')}
+									className="resume-projects-image"
+								/>
+								<div className="resume-projects-image-overlay"></div>
+								</div>
+						</div>
+					</div>
+					<div style={{ height: 200 }} />
 				</div>
 			</div>
 			);
