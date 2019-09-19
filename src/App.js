@@ -8,6 +8,7 @@ import AboutTab from './containers/About';
 import Test from './components/Test';
 import MineGame from './containers/MineGame';
 import SvgBuilder from './containers/SvgBuilder';
+import StyleBank from './containers/StyleBank';
 
 import Footer, { FOOTER_HEIGHT } from './components/Footer';
 
@@ -63,6 +64,7 @@ class App extends React.Component {
 				return <ResumeTab color={"black"} />;
 			case 'playground':
 				return <div style={{ height: `calc(100vh - ${FOOTER_HEIGHT}px)`, textAlign: 'center', fontSize: 36 }}>Under Construction</div>;
+				return <StyleBank />
 			default:
 				return <div />
 		}

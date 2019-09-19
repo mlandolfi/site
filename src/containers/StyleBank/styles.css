@@ -1,0 +1,44 @@
+
+
+.bank-root {
+	padding-top: 100px;
+	margin-bottom: 100px;
+}
+
+.bank-preivew-container {
+	width: 600px;
+	height: 200px;
+	border: 2px solid var(--light-blue);
+	margin: auto;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	box-shadow: 0px 0px 6px -2px #272727;
+}
+
+.bank-bank {
+	height: 400px;
+	width: 1000px;
+	margin: auto;
+	overflow-y: auto;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+}
+
+.bank-section-header {
+	font-size: 2rem;
+	color: var(--light-blue);
+	border-bottom: 1px solid var(--light-blue);
+	width: 100%;
+}
+
+.bank-custom-container {
+	padding-left: 40px;
+}
+
+.bank-custom-header {
+	font-size: 1.5rem;
+	border-bottom: 1px solid #000;
+	margin-bottom: 20px;
+}
