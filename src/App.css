@@ -29,6 +29,7 @@
 
 .nav-button {
 	cursor: pointer;
+	margin-left: 30px;
 }
 
 .blob {
@@ -40,6 +41,24 @@
 	margin: auto;
 }
 
+@media screen and (max-width: 500px) {
+	.header {
+		justify-content: center;
+		width: calc(100vw);
+		position: static;
+	}
+
+	.nav-header {
+		justify-content: space-around;
+		width: 100%;
+	}
+
+	.nav-button {
+		margin-left: none;
+		width: 40%;
+		text-align: center;
+	}
+}
 
 .fade-in {
 	-webkit-animation: fadein 0.4s; /* Safari, Chrome and Opera > 12.1 */

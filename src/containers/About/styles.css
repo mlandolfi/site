@@ -96,6 +96,7 @@
 @media screen and (max-width: 500px) {
 
 	#about-title {
+		padding-top: 0px;
 		font-size: 2rem;
 		border-width: 1px;
 	}

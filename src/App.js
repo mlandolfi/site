@@ -78,40 +78,32 @@ class App extends React.Component {
 					className="app-root"
 					ref={(node) => {this.rootRef = node}}
 				>
-					{this.isMobile ?
-						<MobileMenu
-							onSelect={this.handleNavClick}
-							options={['about', 'resume', 'playground']}
-						/>
-						:
-						<div className="header" >
-							<div
-								className="nav-header"
+					<div className="header" >
+						<div
+							className="nav-header"
+						>
+							<h2
+								className="on-text nav-button"
+								onClick={() => this.handleNavClick('about')}
 							>
+								About
+							</h2>
+							<h2
+								className="on-text nav-button"
+								onClick={() => this.handleNavClick('resume')}
+							>
+								Resume
+							</h2>
+							{!this.isMobile &&
 								<h2
 									className="on-text nav-button"
-									style={{ marginLeft: 30 }}
-									onClick={() => this.handleNavClick('about')}
-								>
-									About
-								</h2>
-								<h2
-									className="on-text nav-button"
-									style={{ marginLeft: 30 }}
-									onClick={() => this.handleNavClick('resume')}
-								>
-									Resume
-								</h2>
-								<h2
-									className="on-text nav-button"
-									style={{ marginLeft: 30 }}
 									onClick={() => this.handleNavClick('playground')}
 								>
 									Playground
 								</h2>
-							</div>
+							}
 						</div>
-					}
+					</div>
 					<div
 						className={this.state.wrapClass}
 					>
