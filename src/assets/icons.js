@@ -81,3 +81,34 @@ export const ArrowDownIcon = ({ color, size, style }) => (
 		/>
 	</svg>
 	);
+
+export const MenuIcon = ({ color, size, style }) => (
+	<svg
+		width={size}
+		height={size}
+		viewBox="0 0 100 100"
+		style={style}
+	>
+		<line
+			x1="10" y1="25"
+			x2="90" y2="25"
+			stroke={color ? color : '#000'}
+			strokeWidth="10"
+			strokeLinecap="round"
+		/>
+		<line
+			x1="10" y1="50"
+			x2="90" y2="50"
+			stroke={color ? color : '#000'}
+			strokeWidth="10"
+			strokeLinecap="round"
+		/>
+		<line
+			x1="10" y1="75"
+			x2="90" y2="75"
+			stroke={color ? color : '#000'}
+			strokeWidth="10"
+			strokeLinecap="round"
+		/>
+	</svg>
+	);

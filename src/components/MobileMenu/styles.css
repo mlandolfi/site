@@ -1,0 +1,73 @@
+
+#mm-reveal-button {
+	position: fixed;
+	z-index: 100;
+	top: 5px;
+	right: 5px;
+	width: 45px;
+	height: 45px;
+	border-radius: 50%;
+	box-shadow: 0px 1px 2px 1px #ddd;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	outline: none;
+	background: var(--background-color);
+	border: none;
+}
+
+#mm-reveal-button:active {
+	box-shadow: 0px 1px 1px 0px #aaa;
+}
+
+.mm-root {
+	position: fixed;
+	z-index: 100;
+	top: 0px;
+	width: calc(100vw);
+	height: 0px;
+	background: var(--background-color);
+	box-shadow: 0px 1px 4px 0px #aaa;
+	overflow: hidden;
+	transition: height 0.2s;
+}
+
+.mm-root-show {
+	height: 75px;
+}
+
+#mm-hide-button {
+	position: absolute;
+	z-index: 110;
+	bottom: 5px;
+	left: 50%;
+	margin-left: -15px;
+	width: 30px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+#mm-options-container {
+	display: flex;
+	justify-content: space-around;
+	padding: 15px;
+	font-size: 1.2rem;
+	text-transform: capitalize;
+}
+
+@media screen and (max-width: 400px) {
+	.mm-root-show {
+		height: 60px;
+	}
+
+	#mm-options-container {
+		padding: 2px;
+		padding-top: 10px;
+		font-size: 0.95rem;
+	}
+}
+
+.mm-option {
+	width: 25%;
+}

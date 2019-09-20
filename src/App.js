@@ -2,6 +2,7 @@ import React from 'react';
 import './App.css';
 
 import Nav from './components/Nav'
+import MobileMenu from './components/MobileMenu'
 
 import ResumeTab from './containers/Resume';
 import AboutTab from './containers/About';
@@ -42,6 +43,7 @@ class App extends React.Component {
 			tab: 'about',
 			wrapClass: 'fade-in',
 		}
+		this.isMobile = window.innerWidth < 500;
 	}
 
 	handleNavClick = (label) => {
@@ -59,9 +61,9 @@ class App extends React.Component {
 			return <MineGame />
 		switch(tab) {
 			case 'about':
-				return <AboutTab />;
+				return <AboutTab isMobile={this.isMobile} />;
 			case 'resume':
-				return <ResumeTab color={"black"} />;
+				return <ResumeTab isMobile={this.isMobile} color={"black"} />;
 			case 'playground':
 				return <div style={{ height: `calc(100vh - ${FOOTER_HEIGHT}px)`, textAlign: 'center', fontSize: 36 }}>Under Construction</div>;
 				return <StyleBank />
@@ -76,33 +78,40 @@ class App extends React.Component {
 					className="app-root"
 					ref={(node) => {this.rootRef = node}}
 				>
-					<div className="header" >
-						<div
-							className="nav-header"
-						>
-							<h2
-								className="on-text nav-button"
-								style={{ marginLeft: 30 }}
-								onClick={() => this.handleNavClick('about', 'red')}
+					{this.isMobile ?
+						<MobileMenu
+							onSelect={this.handleNavClick}
+							options={['about', 'resume', 'playground']}
+						/>
+						:
+						<div className="header" >
+							<div
+								className="nav-header"
 							>
-								About
-							</h2>
-							<h2
-								className="on-text nav-button"
-								style={{ marginLeft: 30 }}
-								onClick={() => this.handleNavClick('resume', 'red')}
-							>
-								Resume
-							</h2>
-							<h2
-								className="on-text nav-button"
-								style={{ marginLeft: 30 }}
-								onClick={() => this.handleNavClick('playground', 'red')}
-							>
-								Playground
-							</h2>
+								<h2
+									className="on-text nav-button"
+									style={{ marginLeft: 30 }}
+									onClick={() => this.handleNavClick('about')}
+								>
+									About
+								</h2>
+								<h2
+									className="on-text nav-button"
+									style={{ marginLeft: 30 }}
+									onClick={() => this.handleNavClick('resume')}
+								>
+									Resume
+								</h2>
+								<h2
+									className="on-text nav-button"
+									style={{ marginLeft: 30 }}
+									onClick={() => this.handleNavClick('playground')}
+								>
+									Playground
+								</h2>
+							</div>
 						</div>
-					</div>
+					}
 					<div
 						className={this.state.wrapClass}
 					>
