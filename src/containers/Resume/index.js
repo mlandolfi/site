@@ -292,7 +292,12 @@ export default class Resume extends React.Component {
 									Undergraduate Mentoring Experince
 								</h2>
 								<div>
-										<h3 className="coursework-text-left on-text"><Dash />Intro to Algorithms - Fall 2019</h3>
+										<h3
+											className="coursework-text-left on-text"
+											style={this.props.isMobile ? { fontSize: '0.8rem' } : {}}
+										>
+											<Dash />Intro to Algorithms - Fall 2019
+										</h3>
 								</div>
 							</div>
 						</div>

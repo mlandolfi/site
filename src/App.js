@@ -82,12 +82,14 @@ class App extends React.Component {
 							<h2
 								className="on-text nav-button"
 								onClick={() => this.handleNavClick('about')}
+								style={this.isMobile ? {} : { marginLeft: 30 }}
 							>
 								About
 							</h2>
 							<h2
 								className="on-text nav-button"
 								onClick={() => this.handleNavClick('resume')}
+								style={this.isMobile ? {} : { marginLeft: 30 }}
 							>
 								Resume
 							</h2>
@@ -95,6 +97,7 @@ class App extends React.Component {
 								<h2
 									className="on-text nav-button"
 									onClick={() => this.handleNavClick('playground')}
+									style={this.isMobile ? {} : { marginLeft: 30 }}
 								>
 									Playground
 								</h2>

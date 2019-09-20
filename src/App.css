@@ -29,7 +29,6 @@
 
 .nav-button {
 	cursor: pointer;
-	margin-left: 30px;
 }
 
 .blob {
@@ -54,7 +53,6 @@
 	}
 
 	.nav-button {
-		margin-left: none;
 		width: 40%;
 		text-align: center;
 	}

@@ -198,4 +198,9 @@
 		width: auto;
 		height: auto;
 	}
+
+	.coursework-row {
+		font-size: 0.8rem;
+	}
+
 }
