@@ -2,6 +2,7 @@ import React from 'react';
 import './styles.css';
 
 import MapLocation from '../../components/MapLocation';
+import MobileMenu from '../../components/MobileMenu';
 import { DownloadIcon } from '../../assets/icons';
 
 const sections = [
@@ -36,7 +37,7 @@ export default class Resume extends React.Component {
   	if (this.scrollLock) return;
 		const currentMapIndex = this.getCurrentMapIndex();
 		if (currentMapIndex !== this.state.mapOnIndex) {
-			this.setState({ mapOn: sections[currentMapIndex], mapOnIndex: currentMapIndex });
+			this.setState({ mapOn: sections[currentMapIndex].label, mapOnIndex: currentMapIndex });
 		}
   }
 
@@ -78,50 +79,69 @@ export default class Resume extends React.Component {
 		}
 	}
 
+	handleMMClick = (section, index) => {
+		this.handleMapClick(section, index)();
+	}
+
 	render() {
 		return (
 			<div className="resume-root" >
-				<div className="resume-map-container" >
-					<div
-						className="resume-map"
-					>
+				{this.props.isMobile &&
+					<MobileMenu
+						options={sections}
+						selected={this.state.mapOn}
+						onSelect={this.handleMMClick}
+					/>
+				}
+				{!this.props.isMobile &&
+					<div className="resume-map-container" >
 						<div
-							id="resume-map-blob"
-							style={{ top: 9+this.state.mapOnIndex*30 }}
-						/>
-						{sections.map((section, index) => (
-							<MapLocation
-								key={section.label}
-								label={section.label}
-								color={this.props.color}
-								selected={this.state.mapOnIndex === index}
-								onClick={this.handleMapClick(section, index)}
-							/>
-							))}
-					</div>
-				</div>
-				<div className="resume-content" >
-					<a
-						id="resume-download"
-						download="Mike_Landolfi_Resume"
-						href={require('../../assets/resume.pdf')}
-						style={{ display: 'flex', alignItems: 'center', textDecoration: 'none', justifyContent: 'center' }}
-					>
-						<DownloadIcon color="#22A29F" size="30" />
-						<p
-							className="tighten-text"
-							style={{ marginLeft: 10 }}
+							className="resume-map"
 						>
-							click to download resume as a pdf
-						</p>
-					</a>
+							<div
+								id="resume-map-blob"
+								style={{ top: 9+this.state.mapOnIndex*30 }}
+							/>
+							{sections.map((section, index) => (
+								<MapLocation
+									key={section.label}
+									label={section.label}
+									color={this.props.color}
+									selected={this.state.mapOnIndex === index}
+									onClick={this.handleMapClick(section, index)}
+								/>
+								))}
+						</div>
+					</div>
+				}
+				<div className="resume-content" >
+					{!this.props.isMobile &&
+						<a
+							id="resume-download"
+							download="Mike_Landolfi_Resume"
+							href={require('../../assets/resume.pdf')}
+							style={{ display: 'flex', alignItems: 'center', textDecoration: 'none', justifyContent: 'center' }}
+						>
+							<DownloadIcon color="#22A29F" size="30" />
+							<p
+								className="tighten-text"
+								style={{ marginLeft: 10 }}
+							>
+								click to download resume as a pdf
+							</p>
+						</a>
+					}
 					<h1 className="resume-section-title" ref={(node) => {sections[0].ref = node}} >{sections[0].label}</h1>
 					<div className="experience-timeline" >
-						<div id="timeline-line" />
+						{!this.props.isMobile &&
+							<div id="timeline-line" />
+						}
 						<div className="timeline-section">
-							<div className="timeline-ball">
-								Summer 2019
-							</div>
+							{!this.props.isMobile &&
+								<div className="timeline-ball">
+									Summer 2019
+								</div>
+							}
 							<div className="on-text" >
 								<h1 className="on-text" >
 									Quicken - Software Engineer Intern, Menlo Park, CA
@@ -157,9 +177,11 @@ export default class Resume extends React.Component {
 						</div>
 						<div style={{ height: 90 }} />
 						<div className="timeline-section" >
-							<div className="timeline-ball" >
-								Summer 2018
-							</div>
+							{!this.props.isMobile &&
+								<div className="timeline-ball">
+									Summer 2018
+								</div>
+							}
 							<div className="on-text">
 								<h1 className="on-text" >
 									Quicken - Software Engineer Intern, Menlo Park, CA
@@ -188,9 +210,11 @@ export default class Resume extends React.Component {
 						</div>
 						<div style={{ height: 90 }} />
 						<div className="timeline-section" >
-							<div className="timeline-ball" >
-								Summer 2017
-							</div>
+							{!this.props.isMobile &&
+								<div className="timeline-ball">
+									Summer 2017
+								</div>
+							}
 							<div className="on-text">
 								<h1 className="on-text" >
 									Zeal - Growth Acquisition Intern, San Francisco, CA
@@ -339,6 +363,7 @@ export default class Resume extends React.Component {
 							<div style={{ position: 'relative' }} >
 								<img
 									src={require('../../assets/MLR_for_website.png')}
+									alt="legacy-recipe-homepage"
 									className="resume-projects-image"
 								/>
 								<div className="resume-projects-image-overlay"></div>
@@ -364,6 +389,7 @@ export default class Resume extends React.Component {
 							<div style={{ position: 'relative' }} >
 								<img
 									src={require('../../assets/PW_for_website.png')}
+									alt="personal-website-homepage"
 									className="resume-projects-image"
 								/>
 								<div className="resume-projects-image-overlay"></div>

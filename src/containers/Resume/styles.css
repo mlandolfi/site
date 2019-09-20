@@ -179,3 +179,23 @@
 	margin-bottom: 150px;
 	margin-top: 60px;
 }
+
+@media screen and (max-width: 500px) {
+
+	.resume-content {
+		max-width: calc(90vw);
+		padding: 5px;
+	}
+
+	.resume-projects-container {
+		flex-direction: column;
+		margin-bottom: 20px;
+	}
+
+	.resume-projects-image {
+		max-width: calc(90vw);
+		max-height: calc(90vh);
+		width: auto;
+		height: auto;
+	}
+}

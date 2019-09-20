@@ -1,12 +1,9 @@
 import React from 'react';
 import './App.css';
 
-import Nav from './components/Nav'
-import MobileMenu from './components/MobileMenu'
-
 import ResumeTab from './containers/Resume';
 import AboutTab from './containers/About';
-import Test from './components/Test';
+// import Test from './components/Test';
 import MineGame from './containers/MineGame';
 import SvgBuilder from './containers/SvgBuilder';
 import StyleBank from './containers/StyleBank';
@@ -40,7 +37,7 @@ class App extends React.Component {
 		super(props);
 		this.rootRef = null;
 		this.state = {
-			tab: 'about',
+			tab: 'resume',
 			wrapClass: 'fade-in',
 		}
 		this.isMobile = window.innerWidth < 500;
