@@ -42,6 +42,12 @@ export default function MobileMenu(props) {
 					/>
 				</div>
 			</div>
+			{showMenu &&
+				<div
+					id="mm-away-modal"
+					onClick={(e) => setShowMenu(false)}
+				/>
+			}
 		</div>
 		)
 }

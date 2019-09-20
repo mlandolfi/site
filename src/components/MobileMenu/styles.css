@@ -71,3 +71,12 @@
 .mm-option {
 	width: 25%;
 }
+
+#mm-away-modal {
+	position: absolute;
+	top: 0px;
+	background-color: rgba(0,0,0,0.1);
+	width: calc(100vw);
+	height: calc(100vh);
+	z-index: 90;
+}
