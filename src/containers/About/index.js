@@ -46,6 +46,8 @@ export default class About extends React.Component {
 								I'm most intrigued by front end development and constructing simple but powerful websites.
 								I have the most experience writing in React but also have a deep understanding of plain HTML and CSS.
 								In addition, I am very familiar with Redux as well as making requests to RESTful and GraphQL APIs.
+								Although I enjoy working on the front end, I am always excited to learn new skills and expand into
+								different areas of computer science.
 							</p>
 							<p>
 								When I'm not occupied with coursework or exploring my side projects you'll probably find me
