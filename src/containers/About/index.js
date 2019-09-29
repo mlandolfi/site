@@ -12,10 +12,10 @@ export default class About extends React.Component {
 					<div id="photo-background-container">
 						<span id="about-photo-text">
 							Mike Landolfi
-							<div style={{ height: 30 }} />
+							{/*<div style={{ height: 30 }} />
 							<p className="on-text" id="about-photo-quote">
-								Web Developer
-							</p>
+															Web Developer
+														</p>*/}
 						</span>
 						<a href="#about-info-container">
 							<div id="about-arrow-down" className="flex-center">
