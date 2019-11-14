@@ -215,6 +215,9 @@ class StyleBank extends React.Component {
 						</React.Fragment>
 						))}
 				</div>
+				<div style={{ position: 'absolute', bottom: 0, right: 10 }}>
+					StylesBank v1.0
+				</div>
 			</div>
 			);
 	}

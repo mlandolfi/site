@@ -3,6 +3,7 @@
 .bank-root {
 	padding-top: 50px;
 	height: calc(100vh - 125px);	/*50 for padding + 75 for footer*/
+	position: relative;
 }
 
 .bank-header {
