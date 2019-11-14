@@ -62,8 +62,8 @@ class App extends React.Component {
 			case 'resume':
 				return <ResumeTab isMobile={this.isMobile} color={"black"} />;
 			case 'playground':
-				return <div style={{ height: `calc(100vh - ${FOOTER_HEIGHT}px)`, textAlign: 'center', fontSize: 36 }}>Under Construction</div>;
 				return <StyleBank />
+				return <div style={{ height: `calc(100vh - ${FOOTER_HEIGHT}px)`, textAlign: 'center', fontSize: 36 }}>Under Construction</div>;
 			default:
 				return <div />
 		}

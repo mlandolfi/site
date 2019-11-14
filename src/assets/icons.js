@@ -112,3 +112,29 @@ export const MenuIcon = ({ color, size, style }) => (
 		/>
 	</svg>
 	);
+
+
+export const SearchIcon = ({ color, size, style }) => (
+	<svg
+		width={size}
+		height={size}
+		viewBox="0 0 100 100"
+		style={style}
+	>
+		<circle
+			cx="35"
+			cy="35"
+			r="30"
+			stroke={color ? color : '#000'}
+			strokeWidth="10"
+			fill="none"
+		/>
+		<line
+			x1="60" y1="60"
+			x2="90" y2="85"
+			stroke={color ? color : '#000'}
+			strokeWidth="10"
+			strokeLinecap="round"
+		/>
+	</svg>
+	);
