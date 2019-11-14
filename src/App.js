@@ -37,7 +37,7 @@ class App extends React.Component {
 		super(props);
 		this.rootRef = null;
 		this.state = {
-			tab: 'about',
+			tab: 'playground',
 			wrapClass: 'fade-in',
 		}
 		this.isMobile = window.innerWidth < 500;
@@ -62,8 +62,8 @@ class App extends React.Component {
 			case 'resume':
 				return <ResumeTab isMobile={this.isMobile} color={"black"} />;
 			case 'playground':
-				return <div style={{ height: `calc(100vh - ${FOOTER_HEIGHT}px)`, textAlign: 'center', fontSize: 36 }}>Under Construction</div>;
 				return <StyleBank />
+				return <div style={{ height: `calc(100vh - ${FOOTER_HEIGHT}px)`, textAlign: 'center', fontSize: 36 }}>Under Construction</div>;
 			default:
 				return <div />
 		}
