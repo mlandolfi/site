@@ -106,10 +106,10 @@ const BANK = [
 			{ label: '#8', style: { boxShadow: '2px 2px 0px 2px #575757' } },
 			{ label: '#9', style: { boxShadow: '1px 1px 0px 2px #575757' } },
 		],
-		customLabel: '<shift> <drop> <blur*> <spread*> <color>',
-		customStyles: [
-			{ label: 'boxShadow' },
-		],
+		// customLabel: '<shift> <drop> <blur*> <spread*> <color>',
+		// customStyles: [
+		// 	{ label: 'boxShadow' },
+		// ],
 	},
 	{
 		label: 'Padding',
