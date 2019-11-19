@@ -106,10 +106,6 @@ const BANK = [
 			{ label: '#8', style: { boxShadow: '2px 2px 0px 2px #575757' } },
 			{ label: '#9', style: { boxShadow: '1px 1px 0px 2px #575757' } },
 		],
-		// customLabel: '<shift> <drop> <blur*> <spread*> <color>',
-		// customStyles: [
-		// 	{ label: 'boxShadow' },
-		// ],
 	},
 	{
 		label: 'Padding',
@@ -159,6 +155,48 @@ const BANK = [
 		],
 		customStyles: [
 			{ label: 'margin', inputType: 'number', conversion: parseInt },
+		],
+	},
+	{
+		label: 'Display',
+		baseStyles: {
+			...labelStyles,
+			border: '1px solid #ccc',
+			height: 'fit-content',
+		},
+		allStyles: [
+			{ label: 'flex-row', style: { display: 'flex', flexDirection: 'row' } },
+			{ label: 'flex-column', style: { display: 'flex', flexDirection: 'column' } },
+			{ label: 'block', style: { display: 'block' } },
+			{ label: 'inline', style: { display: 'inline' } },
+		],
+	},
+	{
+		label: 'Font Size',
+		baseStyles: {
+			...labelStyles,
+			border: '1px solid #ccc',
+			height: 'fit-content',
+		},
+		allStyles: [
+			{ label: '12px', style: { fontSize: 12 } },
+			{ label: '14px', style: { fontSize: 14 } },
+			{ label: '16px', style: { fontSize: 16 } },
+			{ label: '18px', style: { fontSize: 18 } },
+			{ label: '24px', style: { fontSize: 24 } },
+			{ label: '30px', style: { fontSize: 30 } },
+			{ label: '36px', style: { fontSize: 36 } },
+			{ label: '42px', style: { fontSize: 42 } },
+			{ newLine: true },
+			{ label: '0.5rem', style: { fontSize: '0.5rem' } },
+			{ label: '1rem', style: { fontSize: '1rem' } },
+			{ label: '1.5rem', style: { fontSize: '1.5rem' } },
+			{ label: '2rem', style: { fontSize: '2rem' } },
+			{ label: '2.5rem', style: { fontSize: '2.5rem' } },
+			{ label: '3rem', style: { fontSize: '3rem' } },
+		],
+		customStyles: [
+			{ label: 'fontSize', inputType: 'number', conversion: parseInt },
 		],
 	},
 ]

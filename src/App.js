@@ -109,7 +109,9 @@ class App extends React.Component {
 					>
 						{this.renderTab()}
 					</div>
-					<Footer />
+					{this.state.tab !== 'playground' &&
+						<Footer />
+					}
 				</div>
 			);
 	}

@@ -1,12 +1,13 @@
 import React from 'react';
 import './styles.css';
 
-import FOOTER_HEIGHT from '../../components/Footer';
+import BabyTab from '../../components/BabyTab';
 
 import Bank from './data';
 
-import { SearchIcon } from '../../assets/icons';
+import { SearchIcon, BlocksIcon, CursorIcon } from '../../assets/icons';
 
+const CONTAINER_TYPES = ['div', 'button', 'span', 'input', 'p', 'a', 'ul', 'ol'];
 
 class StyleBank extends React.Component {
 
@@ -17,6 +18,7 @@ class StyleBank extends React.Component {
 				backgroundColor: '#ffffff'
 			},
 			containerType: 'div',
+			childType: 'txt',
 			filter: "",
 			stylesCopied: false,
 		};
@@ -106,21 +108,28 @@ class StyleBank extends React.Component {
 		}, 1500)
 	}
 
+	renderBlocks = () => (
+		<React.Fragment>
+			<div className="bank-child-block" />
+			<div className="bank-child-block" />
+			<div className="bank-child-block" />
+		</React.Fragment>)
+
 	renderContainer = () => {
-		const { containerType, appliedStyles } = this.state;
+		const { containerType, appliedStyles, childType } = this.state;
 		switch(containerType) {
 			case 'div':
-				return <div style={appliedStyles} />;
+				return <div style={appliedStyles}>{childType === 'txt' ? <p>lorem ipsum</p> : this.renderBlocks()}</div>;
 			case 'button':
-				return <button style={appliedStyles} />;
+				return <button style={appliedStyles}>{childType === 'txt' ? <p>lorem ipsum</p> : this.renderBlocks()}</button>;
 			case 'span':
-				return <span style={appliedStyles} />
+				return <span style={appliedStyles}>{childType === 'txt' ? <p>lorem ipsum</p> : this.renderBlocks()}</span>
 			case 'input':
 				return <input style={appliedStyles} />
 			case 'p':
 				return <p style={appliedStyles}>lorem ipsum</p>
 			case 'a':
-				return <a href="#playground-root" style={appliedStyles}>lorem ipsum</a>
+				return <a href="#playground-root" style={appliedStyles}>{childType === 'txt' ? <p>lorem ipsum</p> : this.renderBlocks()}</a>
 			case 'ul':
 				return (
 					<ul style={appliedStyles}>
@@ -138,7 +147,7 @@ class StyleBank extends React.Component {
 					</ol>
 					);
 			default:
-				return <div style={appliedStyles} />
+				return <div style={appliedStyles}>{childType === 'txt' ? <p>lorem ipsum</p> : this.renderBlocks()}</div>;
 		}
 	}
 
@@ -165,6 +174,28 @@ class StyleBank extends React.Component {
 							</p>
 					</div>
 					<div className="bank-preivew-container">
+					{CONTAINER_TYPES.map((ct, index) => (
+						<BabyTab
+							value={ct}
+							position={{ top: -32, left: -2 + index*57 }}
+							style={{ borderBottom: 'none', width: 55 }}
+							selected={ct === this.state.containerType}
+							onClick={(val) => {this.setState({ containerType: val })}}
+						/>))}
+						<BabyTab
+							value={<CursorIcon size={25} color={'txt' === this.state.childType ? '#f2efe0' : '#000'} />}
+							position={{ right: -42, top: -2 }}
+							style={{ borderLeft: 'none', width: 40 }}
+							selected={'txt' === this.state.childType}
+							onClick={(val) => {this.setState({ childType: 'txt' })}}
+						/>
+						<BabyTab
+							value={<BlocksIcon size={25} color={'blocks' === this.state.childType ? '#f2efe0' : '#000'} />}
+							position={{ right: -42, top: 30 }}
+							style={{ borderLeft: 'none', width: 40 }}
+							selected={'blocks' === this.state.childType}
+							onClick={(val) => {this.setState({ childType: 'blocks' })}}
+						/>
 						{this.renderContainer()}
 					</div>
 				</div>
@@ -183,8 +214,10 @@ class StyleBank extends React.Component {
 						<React.Fragment key={section.label}>
 							<p className="bank-section-header">{section.label}</p>
 							<div style={{ display: 'flex', flexWrap: 'wrap' }} >
-								{section.allStyles.map((boi) => (
-									<div
+								{section.allStyles.map((boi) => boi.newLine ?
+									<div style={{ flexBasis: '100%', height: 0 }}/>
+									:
+									(<div
 										style={{
 											...section.baseStyles,
 											...boi.style,

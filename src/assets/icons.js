@@ -138,3 +138,84 @@ export const SearchIcon = ({ color, size, style }) => (
 		/>
 	</svg>
 	);
+
+export const BlocksIcon = ({ color, size, style }) => (
+	<svg
+		width={size}
+		height={size}
+		viewBox="0 0 100 100"
+		style={style}
+	>
+		<rect
+			x="0"
+			y="40"
+			width="25"
+			height="25"
+			fill={color ? color : '#000'}
+			rx="4"
+		/>
+		<rect
+			x="38"
+			y="40"
+			width="25"
+			height="25"
+			fill={color ? color : '#000'}
+			rx="4"
+		/>
+		<rect
+			x="75"
+			y="40"
+			width="25"
+			height="25"
+			fill={color ? color : '#000'}
+			rx="4"
+		/>
+	</svg>
+	);
+
+export const CursorIcon = ({ color, size, style }) => (
+	<svg
+		width={size}
+		height={size}
+		viewBox="0 0 100 100"
+		style={style}
+	>
+		<path
+			d="M25,20 Q55,20 50,30"
+			strokeWidth="6"
+			stroke={color ? color : '#000'}
+		/>
+		<path
+			d="M75,20 Q45,20 50,30"
+			strokeWidth="6"
+			stroke={color ? color : '#000'}
+		/>
+		<line
+			x1="50" y1="20"
+			x2="50" y2="80"
+			stroke={color ? color : '#000'}
+			strokeWidth="8"
+		/>
+		<path
+			d="M25,80 Q55,80 50,70"
+			strokeWidth="6"
+			stroke={color ? color : '#000'}
+		/>
+		<path
+			d="M75,80 Q45,80 50,70"
+			strokeWidth="6"
+			stroke={color ? color : '#000'}
+		/>
+	</svg>
+	);
+
+// M = moveto
+// L = lineto
+// H = horizontal lineto
+// V = vertical lineto
+// C = curveto
+// S = smooth curveto
+// Q = quadratic Bézier curve
+// T = smooth quadratic Bézier curveto
+// A = elliptical Arc
+// Z = closepath
