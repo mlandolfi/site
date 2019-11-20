@@ -1,7 +1,7 @@
 import React from 'react';
 
 function parseIntNaN(val) {
-	if (isNaN(parseInt(val))) return 0;
+	if (isNaN(parseInt(val))) return undefined;
 	return parseInt(val);
 }
 
@@ -51,6 +51,8 @@ const BANK = [
 		label: 'Border Style',
 		baseStyles: {
 			...labelStyles,
+			minWidth: 60,
+			minHeight: 60,
 		},
 		allStyles: [
 			{ label: 'dotted', style: { borderStyle: 'dotted' } },
@@ -68,6 +70,8 @@ const BANK = [
 		label: 'Border Width',
 		baseStyles: {
 			...labelStyles,
+			minWidth: 60,
+			minHeight: 60,
 			border: '0px solid #000',
 		},
 		allStyles: [
@@ -78,6 +82,7 @@ const BANK = [
 			{ label: '4px', style: { borderWidth: 4 } },
 			{ label: '6px', style: { borderWidth: 6 } },
 			{ label: '10px', style: { borderWidth: 10 } },
+			{ label: 'unset', style: { borderWidth: undefined,  } },
 		],
 		customStyles: [
 			{ label: 'borderWidth', inputType: 'number', conversion: parseIntNaN },
@@ -87,6 +92,8 @@ const BANK = [
 		label: 'Border Color',
 		baseStyles: {
 			...labelStyles,
+			minWidth: 60,
+			minHeight: 60,
 			border: '2px solid',
 		},
 		allStyles: [
@@ -94,6 +101,7 @@ const BANK = [
 			{ label: '#ff0000', style: { borderColor: '#ff0000' } },
 			{ label: '#0000ff', style: { borderColor: '#0000ff' } },
 			{ label: '#ffff00', style: { borderColor: '#ffff00' } },
+			{ label: 'unset', style: { borderColor: undefined,  } },
 		],
 		customStyles: [
 			{ label: 'borderColor', inputType: 'color' },
@@ -103,6 +111,8 @@ const BANK = [
 		label: 'Background Color',
 		baseStyles: {
 			...labelStyles,
+			minWidth: 60,
+			minHeight: 60,
 			color: '#000',
 		},
 		allStyles: [
@@ -111,6 +121,7 @@ const BANK = [
 			{ label: '#0000ff', style: { backgroundColor: '#0000ff' } },
 			{ label: '#ffff00', style: { backgroundColor: '#ffff00' } },
 			{ label: 'transparent', style: { backgroundColor: 'transparent' } },
+			{ label: 'unset', style: { backgroundColor: undefined,  } },
 		],
 		customStyles: [
 			{ label: 'backgroundColor', inputType: 'color' },
@@ -120,6 +131,8 @@ const BANK = [
 		label: 'Box Shadow',
 		baseStyles: {
 			...labelStyles,
+			minWidth: 60,
+			minHeight: 60,
 		},
 		allStyles: [
 			{ label: '#1', style: { boxShadow: '0px 2px 3px #575757' } },
@@ -131,12 +144,15 @@ const BANK = [
 			{ label: '#7', style: { boxShadow: '2px 2px 4px #575757' } },
 			{ label: '#8', style: { boxShadow: '2px 2px 0px 2px #575757' } },
 			{ label: '#9', style: { boxShadow: '1px 1px 0px 2px #575757' } },
+			{ label: 'unset', style: { boxShadow: undefined,  } },
 		],
 	},
 	{
 		label: 'Padding',
 		baseStyles: {
 			...labelStyles,
+			minWidth: 60,
+			minHeight: 60,
 			height: 'fit-content',
 		},
 		allStyles: [
@@ -152,6 +168,7 @@ const BANK = [
 			{ label: '15px', style: { padding: 15 } },
 			{ label: '20px', style: { padding: 20 } },
 			{ label: '40px', style: { padding: 40 } },
+			{ label: 'unset', style: { padding: undefined,  } },
 		],
 		customStyles: [
 			{ label: 'padding', inputType: 'number', conversion: parseIntNaN },
@@ -161,7 +178,8 @@ const BANK = [
 		label: 'Margin',
 		baseStyles: {
 			...labelStyles,
-			border: '1px solid #ccc',
+			minWidth: 60,
+			minHeight: 60,
 			height: 'fit-content',
 		},
 		allStyles: [
@@ -177,6 +195,7 @@ const BANK = [
 			{ label: '15px', style: { margin: 15 } },
 			{ label: '20px', style: { margin: 20 } },
 			{ label: '40px', style: { margin: 40 } },
+			{ label: 'unset', style: { margin: undefined,  } },
 		],
 		customStyles: [
 			{ label: 'margin', inputType: 'number', conversion: parseIntNaN },
@@ -186,6 +205,8 @@ const BANK = [
 		label: 'Display',
 		baseStyles: {
 			...labelStyles,
+			minWidth: 60,
+			minHeight: 60,
 			height: 'fit-content',
 		},
 		allStyles: [
@@ -193,12 +214,15 @@ const BANK = [
 			{ label: 'flex-column', style: { display: 'flex', flexDirection: 'column' } },
 			{ label: 'block', style: { display: 'block' } },
 			{ label: 'inline', style: { display: 'inline' } },
+			{ label: 'unset', style: { display: undefined,  } },
 		],
 	},
 	{
 		label: 'Font Size',
 		baseStyles: {
 			...labelStyles,
+			minWidth: 60,
+			minHeight: 60,
 			height: 'fit-content',
 		},
 		allStyles: [
@@ -217,6 +241,7 @@ const BANK = [
 			{ label: '2rem', style: { fontSize: '2rem' } },
 			{ label: '2.5rem', style: { fontSize: '2.5rem' } },
 			{ label: '3rem', style: { fontSize: '3rem' } },
+			{ label: 'unset', style: { fontSize: undefined,  } },
 		],
 		customStyles: [
 			{ label: 'fontSize', inputType: 'number', conversion: parseIntNaN },
@@ -233,19 +258,23 @@ const BANK = [
 		allStyles: [
 			{ label: 'row', style: { flexDirection: 'row' } },
 			{ label: 'column', style: { flexDirection: 'column' } },
+			{ label: 'unset', style: { flexDirection: undefined,  } },
 			{ newLine: true },
 			{ label: 'wrap', style: { flexWrap: 'wrap' } },
 			{ label: 'nowrap', style: { flexWrap: 'nowrap' } },
+			{ label: 'unset', style: { flexWrap: undefined,  } },
 			{ newLine: true },
 			{ label: <BlocksLabel />, style: { justifyContent: 'center' } },
 			{ label: <BlocksLabel />, style: { justifyContent: 'space-around' } },
 			{ label: <BlocksLabel />, style: { justifyContent: 'space-between' } },
 			{ label: <BlocksLabel />, style: { justifyContent: 'flex-start' } },
 			{ label: <BlocksLabel />, style: { justifyContent: 'flex-end' } },
+			{ label: 'unset', style: { justifyContent: undefined,  } },
 			{ newLine: true },
 			{ label: <BlocksLabel />, style: { alignItems: 'center' } },
 			{ label: <BlocksLabel />, style: { alignItems: 'flex-start' } },
 			{ label: <BlocksLabel />, style: { alignItems: 'flex-end' } },
+			{ label: 'unset', style: { alignItems: undefined,  } },
 		],
 	},
 ]
