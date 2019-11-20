@@ -19,7 +19,7 @@ class StyleBank extends React.Component {
 			},
 			containerType: 'div',
 			childType: 'txt',
-			filter: "flex",
+			filter: '',
 			stylesCopied: false,
 		};
 	}

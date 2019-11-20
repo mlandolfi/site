@@ -100,6 +100,23 @@ const BANK = [
 		],
 	},
 	{
+		label: 'Background Color',
+		baseStyles: {
+			...labelStyles,
+			color: '#000',
+		},
+		allStyles: [
+			{ label: '#000000', style: { backgroundColor: '#000000' } },
+			{ label: '#ff0000', style: { backgroundColor: '#ff0000' } },
+			{ label: '#0000ff', style: { backgroundColor: '#0000ff' } },
+			{ label: '#ffff00', style: { backgroundColor: '#ffff00' } },
+			{ label: 'transparent', style: { backgroundColor: 'transparent' } },
+		],
+		customStyles: [
+			{ label: 'backgroundColor', inputType: 'color' },
+		],
+	},
+	{
 		label: 'Box Shadow',
 		baseStyles: {
 			...labelStyles,
@@ -169,7 +186,6 @@ const BANK = [
 		label: 'Display',
 		baseStyles: {
 			...labelStyles,
-			border: '1px solid #ccc',
 			height: 'fit-content',
 		},
 		allStyles: [
@@ -183,7 +199,6 @@ const BANK = [
 		label: 'Font Size',
 		baseStyles: {
 			...labelStyles,
-			border: '1px solid #ccc',
 			height: 'fit-content',
 		},
 		allStyles: [
@@ -211,7 +226,6 @@ const BANK = [
 		label: 'Flex',
 		baseStyles: {
 			...labelStyles,
-			border: '1px solid #ccc',
 			width: 100,
 			height: 100,
 			padding: 0,
