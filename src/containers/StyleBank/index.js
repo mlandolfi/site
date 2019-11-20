@@ -36,6 +36,15 @@ class StyleBank extends React.Component {
 	}
 
 	handleCustomInput = (style, value, conversion) => {
+		if (value.length === 0) {	// if the custom style is deleted
+			const copyStyles = Object.assign({}, this.state.appliedStyles);
+			delete copyStyles[style];
+			this.setState({
+				appliedStyles: copyStyles,
+			});
+			return;
+		}
+
 		this.setState({
 			appliedStyles: {
 				...this.state.appliedStyles,
@@ -85,7 +94,7 @@ class StyleBank extends React.Component {
 
 	getFilteredBank = () => {
 		const { filter } = this.state;
-		if (filter.length == 0)
+		if (filter.length === 0)
 			return Bank;
 
 		return Bank.filter(styles => this.checkStylesForMatch(styles, filter));
@@ -176,6 +185,7 @@ class StyleBank extends React.Component {
 					<div className="bank-preivew-container">
 					{CONTAINER_TYPES.map((ct, index) => (
 						<BabyTab
+							key={`baby-tab-${ct}`}
 							value={ct}
 							position={{ top: -32, left: -2 + index*57 }}
 							style={{ borderBottom: 'none', width: 55 }}
@@ -215,7 +225,7 @@ class StyleBank extends React.Component {
 							<p className="bank-section-header">{section.label}</p>
 							<div style={{ display: 'flex', flexWrap: 'wrap' }} >
 								{section.allStyles.map((boi) => boi.newLine ?
-									<div style={{ flexBasis: '100%', height: 0 }}/>
+									<div key={`section-style-${boi.label}`} style={{ flexBasis: '100%', height: 0 }}/>
 									:
 									(<div
 										style={{

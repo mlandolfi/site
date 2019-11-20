@@ -1,3 +1,8 @@
+function parseIntNaN(val) {
+	if (isNaN(parseInt(val))) return 0;
+	return parseInt(val);
+}
+
 
 const labelStyles = {
 	padding: 8,
@@ -23,8 +28,8 @@ const BANK = [
 			{ label: 'unset', style: { width: undefined, height: undefined } }
 		],
 		customStyles: [
-			{ label: 'width', inputType: 'number', conversion: parseInt },
-			{ label: 'height', inputType: 'number', conversion: parseInt },
+			{ label: 'width', inputType: 'number', conversion: parseIntNaN },
+			{ label: 'height', inputType: 'number', conversion: parseIntNaN },
 		],
 	},
 	{
@@ -66,7 +71,7 @@ const BANK = [
 			{ label: '10px', style: { borderWidth: 10 } },
 		],
 		customStyles: [
-			{ label: 'borderWidth', inputType: 'number', conversion: parseInt },
+			{ label: 'borderWidth', inputType: 'number', conversion: parseIntNaN },
 		],
 	},
 	{
@@ -129,7 +134,7 @@ const BANK = [
 			{ label: '40px', style: { padding: 40 } },
 		],
 		customStyles: [
-			{ label: 'padding', inputType: 'number', conversion: parseInt },
+			{ label: 'padding', inputType: 'number', conversion: parseIntNaN },
 		],
 	},
 	{
@@ -154,7 +159,7 @@ const BANK = [
 			{ label: '40px', style: { margin: 40 } },
 		],
 		customStyles: [
-			{ label: 'margin', inputType: 'number', conversion: parseInt },
+			{ label: 'margin', inputType: 'number', conversion: parseIntNaN },
 		],
 	},
 	{
@@ -196,7 +201,7 @@ const BANK = [
 			{ label: '3rem', style: { fontSize: '3rem' } },
 		],
 		customStyles: [
-			{ label: 'fontSize', inputType: 'number', conversion: parseInt },
+			{ label: 'fontSize', inputType: 'number', conversion: parseIntNaN },
 		],
 	},
 ]
