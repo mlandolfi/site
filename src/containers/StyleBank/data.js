@@ -1,14 +1,30 @@
+import React from 'react';
+
 function parseIntNaN(val) {
 	if (isNaN(parseInt(val))) return 0;
 	return parseInt(val);
 }
 
+function BlocksLabel(props) {
+	return (
+		<React.Fragment>
+			<div className="bank-child-block" />
+			<div className="bank-child-block" />
+			<div className="bank-child-block" />
+		</React.Fragment>
+		);
+}
 
 const labelStyles = {
 	padding: 8,
+	fontSize: 16,
+	width: 'auto',
+	height: 'auto',
 	display: 'flex',
 	alignItems: 'center',
 	justifyContent: 'center',
+	margin: 10,
+	cursor: 'pointer',
 };
 
 const BANK = [
@@ -16,7 +32,6 @@ const BANK = [
 		label: 'Sizing',
 		baseStyles: {
 			...labelStyles,
-			border: '1px solid black',
 		},
 		allStyles: [
 			{ label: '20x20', style: { width: 20, height: 20 } },
@@ -36,9 +51,6 @@ const BANK = [
 		label: 'Border Style',
 		baseStyles: {
 			...labelStyles,
-			minWidth: 50,
-			minHeight: 50,
-			border: '2px solid #000',
 		},
 		allStyles: [
 			{ label: 'dotted', style: { borderStyle: 'dotted' } },
@@ -56,9 +68,6 @@ const BANK = [
 		label: 'Border Width',
 		baseStyles: {
 			...labelStyles,
-			minWidth: 50,
-			minHeight: 50,
-			height: 50,
 			border: '0px solid #000',
 		},
 		allStyles: [
@@ -78,9 +87,6 @@ const BANK = [
 		label: 'Border Color',
 		baseStyles: {
 			...labelStyles,
-			minWidth: 50,
-			minHeight: 50,
-			height: 50,
 			border: '2px solid',
 		},
 		allStyles: [
@@ -97,8 +103,6 @@ const BANK = [
 		label: 'Box Shadow',
 		baseStyles: {
 			...labelStyles,
-			minWidth: 50,
-			minHeight: 50,
 		},
 		allStyles: [
 			{ label: '#1', style: { boxShadow: '0px 2px 3px #575757' } },
@@ -116,7 +120,6 @@ const BANK = [
 		label: 'Padding',
 		baseStyles: {
 			...labelStyles,
-			border: '1px solid black',
 			height: 'fit-content',
 		},
 		allStyles: [
@@ -202,6 +205,33 @@ const BANK = [
 		],
 		customStyles: [
 			{ label: 'fontSize', inputType: 'number', conversion: parseIntNaN },
+		],
+	},
+	{
+		label: 'Flex',
+		baseStyles: {
+			...labelStyles,
+			border: '1px solid #ccc',
+			width: 100,
+			height: 100,
+			padding: 0,
+		},
+		allStyles: [
+			{ label: 'row', style: { flexDirection: 'row' } },
+			{ label: 'column', style: { flexDirection: 'column' } },
+			{ newLine: true },
+			{ label: 'wrap', style: { flexWrap: 'wrap' } },
+			{ label: 'nowrap', style: { flexWrap: 'nowrap' } },
+			{ newLine: true },
+			{ label: <BlocksLabel />, style: { justifyContent: 'center' } },
+			{ label: <BlocksLabel />, style: { justifyContent: 'space-around' } },
+			{ label: <BlocksLabel />, style: { justifyContent: 'space-between' } },
+			{ label: <BlocksLabel />, style: { justifyContent: 'flex-start' } },
+			{ label: <BlocksLabel />, style: { justifyContent: 'flex-end' } },
+			{ newLine: true },
+			{ label: <BlocksLabel />, style: { alignItems: 'center' } },
+			{ label: <BlocksLabel />, style: { alignItems: 'flex-start' } },
+			{ label: <BlocksLabel />, style: { alignItems: 'flex-end' } },
 		],
 	},
 ]

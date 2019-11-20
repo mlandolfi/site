@@ -19,7 +19,7 @@ class StyleBank extends React.Component {
 			},
 			containerType: 'div',
 			childType: 'txt',
-			filter: "",
+			filter: "flex",
 			stylesCopied: false,
 		};
 	}
@@ -72,6 +72,7 @@ class StyleBank extends React.Component {
 
 		let hasMatched = false;
 		styles.allStyles.forEach((style) => {	// check allStyles
+			if (!('style' in style))	return;
 			Object.keys(style.style).forEach((key) => {
 				if (key.toLowerCase().indexOf(toMatch) !== -1)
 					hasMatched = true;
@@ -220,21 +221,20 @@ class StyleBank extends React.Component {
 					</div>
 				</div>
 				<div className="bank-bank">
-					{this.getFilteredBank().map((section) => (
+					{this.getFilteredBank().map((section, index) => (
 						<React.Fragment key={section.label}>
 							<p className="bank-section-header">{section.label}</p>
 							<div style={{ display: 'flex', flexWrap: 'wrap' }} >
-								{section.allStyles.map((boi) => boi.newLine ?
-									<div key={`section-style-${boi.label}`} style={{ flexBasis: '100%', height: 0 }}/>
+								{section.allStyles.map((boi, innerIndex) => boi.newLine ?
+									<div key={`section-style-${boi.label}-${index}-${innerIndex}`} style={{ flexBasis: '100%', height: 0 }}/>
 									:
 									(<div
 										style={{
+											...this.state.appliedStyles,
 											...section.baseStyles,
 											...boi.style,
-											margin: 10,
-											cursor: 'pointer',
 										}}
-										key={`section-style-${boi.label}`}
+										key={`section-style-${boi.label}-${index}-${innerIndex}`}
 										onClick={this.handleApplyStyles.bind(this, boi.style)}
 									>
 										{boi.label}
