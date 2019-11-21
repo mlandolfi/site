@@ -37,7 +37,7 @@ class App extends React.Component {
 		super(props);
 		this.rootRef = null;
 		this.state = {
-			tab: 'playground',
+			tab: 'about',
 			wrapClass: 'fade-in',
 		}
 		this.isMobile = window.innerWidth < 500;

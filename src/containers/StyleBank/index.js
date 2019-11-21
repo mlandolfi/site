@@ -19,7 +19,7 @@ class StyleBank extends React.Component {
 			},
 			containerType: 'div',
 			childType: 'txt',
-			filter: '',
+			filter: 'border radius',
 			stylesCopied: false,
 		};
 	}
@@ -259,7 +259,7 @@ class StyleBank extends React.Component {
 						))}
 				</div>
 				<div style={{ position: 'absolute', bottom: 0, right: 10 }}>
-					StylesBank v1.0
+					StylesBank v1.1
 				</div>
 			</div>
 			);
