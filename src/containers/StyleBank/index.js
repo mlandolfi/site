@@ -129,15 +129,15 @@ class StyleBank extends React.Component {
 		const { containerType, appliedStyles, childType } = this.state;
 		switch(containerType) {
 			case 'div':
-				return <div style={appliedStyles}>{childType === 'txt' ? <p>lorem ipsum</p> : this.renderBlocks()}</div>;
+				return <div style={appliedStyles}>{childType === 'txt' ? <p className="on-text">lorem ipsum</p> : this.renderBlocks()}</div>;
 			case 'button':
-				return <button style={appliedStyles}>{childType === 'txt' ? <p>lorem ipsum</p> : this.renderBlocks()}</button>;
+				return <button style={appliedStyles}>{childType === 'txt' ? <p className="on-text">lorem ipsum</p> : this.renderBlocks()}</button>;
 			case 'span':
-				return <span style={appliedStyles}>{childType === 'txt' ? <p>lorem ipsum</p> : this.renderBlocks()}</span>
+				return <span style={appliedStyles}>{childType === 'txt' ? <p className="on-text">lorem ipsum</p> : this.renderBlocks()}</span>
 			case 'input':
 				return <input style={appliedStyles} />
 			case 'p':
-				return <p style={appliedStyles}>lorem ipsum</p>
+				return <p className="on-text" style={appliedStyles}>lorem ipsum</p>
 			case 'a':
 				return <a href="#playground-root" style={appliedStyles}>{childType === 'txt' ? <p>lorem ipsum</p> : this.renderBlocks()}</a>
 			case 'ul':
