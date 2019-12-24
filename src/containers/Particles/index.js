@@ -27,7 +27,8 @@ export default class Particles extends React.Component {
 		this.context.fillStyle = "#22A29F";
 		this.bois.forEach((bp) => {
 			this.context.beginPath();
-			this.context.arc(bp.moveAndGetX(), bp.moveAndGetY(), bp.radius, 0, 2*Math.PI);
+			const [ x, y ] = bp.moveAndGet();
+			this.context.arc(x, y, bp.radius, 0, 2*Math.PI);
 			this.context.closePath();
 			// this.context.fillStyle = `rgba(255, 255, 255, ${bp.radius / this.state.maxR})`
 			this.context.fill();
@@ -58,7 +59,8 @@ export default class Particles extends React.Component {
 		for (let i=0; i<this.state.num; i++) {
 			const temp = new POB(window.innerWidth, window.innerHeight, this.state.maxR, this.state.minR, 0.7, this.state.lineDist);
 			this.context.beginPath();
-			this.context.arc(temp.moveAndGetX(), temp.moveAndGetY(), temp.radius, 0, 2*Math.PI);
+			const [ x, y ] = temp.moveAndGet();
+			this.context.arc(x, y, temp.radius, 0, 2*Math.PI);
 			this.context.closePath();
 			this.context.fill();
 			this.bois.push(temp);
@@ -77,8 +79,8 @@ export default class Particles extends React.Component {
 		return (
 			<div className="particles-root">
 				<canvas width={window.innerWidth} height={window.innerHeight} id="particles-canvas-root" />
-				<div className="particles-menu">
-
+				<div className="particles-version">
+					Particles v1.0
 				</div>
 			</div>);
 	}

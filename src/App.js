@@ -6,8 +6,7 @@ import AboutTab from './containers/About';
 // import Test from './components/Test';
 import MineGame from './containers/MineGame';
 import SvgBuilder from './containers/SvgBuilder';
-import StyleBank from './containers/StyleBank';
-import Particles from './containers/Particles';
+import PlaygroundWrapper from './components/PlaygroundWrapper';
 
 import Footer, { FOOTER_HEIGHT } from './components/Footer';
 
@@ -38,7 +37,7 @@ class App extends React.Component {
 		super(props);
 		this.rootRef = null;
 		this.state = {
-			tab: 'playground',
+			tab: 'about',
 			wrapClass: 'fade-in',
 		}
 		this.isMobile = window.innerWidth < 500;
@@ -63,9 +62,7 @@ class App extends React.Component {
 			case 'resume':
 				return <ResumeTab isMobile={this.isMobile} color={"black"} />;
 			case 'playground':
-				return <Particles />
-				return <StyleBank />
-				return <div style={{ height: `calc(100vh - ${FOOTER_HEIGHT}px)`, textAlign: 'center', fontSize: 36 }}>Under Construction</div>;
+				return <PlaygroundWrapper />
 			default:
 				return <div />
 		}
