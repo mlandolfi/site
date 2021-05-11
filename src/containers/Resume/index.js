@@ -119,7 +119,7 @@ export default class Resume extends React.Component {
 						<a
 							id="resume-download"
 							download="Mike_Landolfi_Resume"
-							href={require('../../assets/resume.pdf')}
+							href={require('../../assets/resume.pdf').default}
 							style={{ display: 'flex', alignItems: 'center', textDecoration: 'none', justifyContent: 'center' }}
 						>
 							<DownloadIcon color="#22A29F" size="30" />
@@ -136,6 +136,40 @@ export default class Resume extends React.Component {
 						{!this.props.isMobile &&
 							<div id="timeline-line" />
 						}
+						<div className="timeline-section">
+							{!this.props.isMobile &&
+								<div className="timeline-ball">
+									Present
+								</div>
+							}
+							<div className="on-text" >
+								<h1 className="on-text" >
+									Quicken - Software Engineer II, Menlo Park, CA
+								</h1>
+								<h4 className="on-text" >
+									June 2020 - Present
+								</h4>
+								<ul className="on-text" >
+									<div style={{margin: 8}}/>
+									<li>
+										Working on Simplifi by Quicken, a personal finance management tool, more specifically
+										focusing on the Reports, Goals, and Watchlist features
+									</li>
+									<div style={{margin: 8}}/>
+									<li>
+										Working on a large scale React based web application with many popular
+										libraries including Redux and Material-UI
+									</li>
+									<div style={{margin: 8}}/>
+									<li>
+										Building custom and reusable components, also writing complex
+										logic that performs calculations on thousands of financial transactions
+									</li>
+									<div style={{margin: 8}}/>
+								</ul>
+							</div>
+						</div>
+						<div style={{ height: 90 }} />
 						<div className="timeline-section">
 							{!this.props.isMobile &&
 								<div className="timeline-ball">
@@ -243,7 +277,7 @@ export default class Resume extends React.Component {
 					<div style={{ paddingLeft: 20, paddingRight: 20 }} >
 						<div>
 							<h1 className="on-text">
-								B.S. in Computer Science, expected May 2020
+								B.S. in Computer Science, 2020
 							</h1>
 							<h3 className="on-text">
 								Rensselaer Polytechnic Institute, Troy, NY
@@ -270,15 +304,15 @@ export default class Resume extends React.Component {
 									</div>
 									<div className="coursework-row">
 										<h3 className="coursework-text-left on-text"><Dash />Operating Systems</h3>
-										<h3 className="coursework-text-right on-text"><Dash />Database Systems (Fall 2019)</h3>
+										<h3 className="coursework-text-right on-text"><Dash />Database Systems</h3>
 									</div>
 									<div className="coursework-row">
 										<h3 className="coursework-text-left on-text"><Dash />Intro to AI</h3>
-										<h3 className="coursework-text-right on-text"><Dash />Programming Languages (Fall 2019)</h3>
+										<h3 className="coursework-text-right on-text"><Dash />Programming Languages</h3>
 									</div>
 									<div className="coursework-row">
 										<h3 className="coursework-text-left on-text"><Dash />Intro to Algorithms</h3>
-										<h3 className="coursework-text-right on-text"><Dash />Large Scale Programming & Testing (Fall 2019)</h3>
+										<h3 className="coursework-text-right on-text"><Dash />Large Scale Programming & Testing</h3>
 									</div>
 									<div className="coursework-row">
 										<h3 className="coursework-text-left on-text"><Dash />Principles of Software</h3>
@@ -294,9 +328,9 @@ export default class Resume extends React.Component {
 								<div>
 										<h3
 											className="coursework-text-left on-text"
-											style={this.props.isMobile ? { fontSize: '0.8rem' } : {}}
+											style={this.props.isMobile ? { fontSize: '0.8rem' } : { width: 500 }}
 										>
-											<Dash />Intro to Algorithms - Fall 2019
+											<Dash />Intro to Algorithms Fall 2019 - Spring 2020
 										</h3>
 								</div>
 							</div>
@@ -317,12 +351,11 @@ export default class Resume extends React.Component {
 							<b>Proficient in</b>: JavaScript - React.JS - Python - HTML - CSS - C - C++ - Java
 						</h2>
 						<h2 className="on-text skills-text">
-							<b>Familiar with</b>: Axios - Redux - npm - Material-UI - React-Bootstrap - Selenium - React Router - amCharts
+							<b>Familiar with</b>: Firebase - Axios - Redux - npm - Material-UI - React-Bootstrap - Selenium - React Router - amCharts
 						</h2>
 						<h2 className="on-text skills-text">
 							<b>Experience with</b>: Git Version Control - HTTP Requests - RESTful && GraphQL APIs
-							- Scrum Methodologies - Agile Development
-
+							- Scrum Methodologies - Agile Development - Jira - Bitbucket
 						</h2>
 					</div>
 					<div style={{ height: 80 }} />
@@ -335,10 +368,10 @@ export default class Resume extends React.Component {
 							<b>Member of the Order of the Arrow</b>, Boy Scout Honor Society, 2013
 						</h2>
 						<h2 className="on-text skills-text">
-							<b>Dean's Honor List</b>, Fall 2017 - Spring 2019
+							<b>Dean's Honor List</b>, Fall 2017 - Fall 2019
 						</h2>
 						<h2 className="on-text skills-text">
-							<b>Rensselaer Leadership Award Scholarship</b> Fall 2017 - Fall 2019
+							<b>Rensselaer Leadership Award Scholarship</b> Fall 2017 - Spring 2020
 						</h2>
 					</div>
 					<div style={{ height: 80 }} />
@@ -367,19 +400,19 @@ export default class Resume extends React.Component {
 						<div className="resume-projects-container">
 							<div style={{ position: 'relative' }} >
 								<img
-									src={require('../../assets/MLR_for_website.png')}
+									src={require('../../assets/jotly-notebook-squareish.png').default}
 									alt="legacy-recipe-homepage"
 									className="resume-projects-image"
 								/>
 								<div className="resume-projects-image-overlay"></div>
 								</div>
 							<div style={{ textAlign: 'center', padding: '0px 35px' }}>
-								<p className="resume-projects-title">My Legacy Recipe</p>
+								<p className="resume-projects-title">Jotly</p>
 								<p className="resume-projects-body" >
-									Currently building out the front end for a recipe sharing website.
-									The site is a React.JS web application that communicates with a GraphQL
-									server for authentication and data management.
+								Enabling students of all abilities to gain more from their notes.
+								 Under the hood it’s  a React based web app that communicates with both Firebase and AWS backends.
 								</p>
+								<a href='https://jotlynotes.web.app' >jotlynotes.com</a>
 							</div>
 						</div>
 						<div className="resume-projects-container">
@@ -393,7 +426,7 @@ export default class Resume extends React.Component {
 							</div>
 							<div style={{ position: 'relative' }} >
 								<img
-									src={require('../../assets/PW_for_website.png')}
+									src={require('../../assets/PW_for_website.png').default}
 									alt="personal-website-homepage"
 									className="resume-projects-image"
 								/>

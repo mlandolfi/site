@@ -13,7 +13,7 @@ export default function MapLocation(props) {
 				href="https://www.linkedin.com/in/michael-landolfi/"
 			>
 				<img
-					src={require('../../assets/lilogo-edited.png')}
+					src={require('../../assets/lilogo-edited.png').default}
 					style={{ height: 30 }}
 				/>
 			</a>

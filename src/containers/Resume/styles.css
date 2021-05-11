@@ -143,7 +143,9 @@
 }
 
 .resume-projects-image {
-	height: 450px;
+	max-height: 450px;
+	max-width: 600px;
+	width: auto;
 	z-index: 100;
 	position: relative;
 	border-radius: 2px;

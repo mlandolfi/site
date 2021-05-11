@@ -98,7 +98,7 @@ class App extends React.Component {
 									onClick={() => this.handleNavClick('playground')}
 									style={this.isMobile ? {} : { marginLeft: 30 }}
 								>
-									Playground
+									Sandbox
 								</h2>
 							}
 						</div>
