@@ -1,20 +1,25 @@
 {
   "files": {
-    "main.css": "/site/static/css/main.53df1046.chunk.css",
-    "main.js": "/site/static/js/main.4a006ee8.chunk.js",
-    "main.js.map": "/site/static/js/main.4a006ee8.chunk.js.map",
-    "runtime~main.js": "/site/static/js/runtime~main.de27f395.js",
-    "runtime~main.js.map": "/site/static/js/runtime~main.de27f395.js.map",
-    "static/js/2.a7be8190.chunk.js": "/site/static/js/2.a7be8190.chunk.js",
-    "static/js/2.a7be8190.chunk.js.map": "/site/static/js/2.a7be8190.chunk.js.map",
+    "main.css": "/site/static/css/main.8c4c166a.chunk.css",
+    "main.js": "/site/static/js/main.f1d0b3ae.chunk.js",
+    "main.js.map": "/site/static/js/main.f1d0b3ae.chunk.js.map",
+    "runtime-main.js": "/site/static/js/runtime-main.53d1ec00.js",
+    "runtime-main.js.map": "/site/static/js/runtime-main.53d1ec00.js.map",
+    "static/js/2.4c4c0d43.chunk.js": "/site/static/js/2.4c4c0d43.chunk.js",
+    "static/js/2.4c4c0d43.chunk.js.map": "/site/static/js/2.4c4c0d43.chunk.js.map",
     "index.html": "/site/index.html",
-    "precache-manifest.30cf34efce09323228481307c05cc67c.js": "/site/precache-manifest.30cf34efce09323228481307c05cc67c.js",
-    "service-worker.js": "/site/service-worker.js",
-    "static/css/main.53df1046.chunk.css.map": "/site/static/css/main.53df1046.chunk.css.map",
-    "static/media/MLR_for_website.png": "/site/static/media/MLR_for_website.53f32cbe.png",
-    "static/media/PW_for_website.png": "/site/static/media/PW_for_website.ab8f714b.png",
-    "static/media/me.JPG": "/site/static/media/me.c8fe4234.JPG",
-    "static/media/styles.css": "/site/static/media/other.02008b7a.jpg",
-    "static/media/resume.pdf": "/site/static/media/resume.8a012761.pdf"
-  }
+    "static/css/main.8c4c166a.chunk.css.map": "/site/static/css/main.8c4c166a.chunk.css.map",
+    "static/js/2.4c4c0d43.chunk.js.LICENSE.txt": "/site/static/js/2.4c4c0d43.chunk.js.LICENSE.txt",
+    "static/media/PW_for_website.png": "/site/static/media/PW_for_website.e98398e8.png",
+    "static/media/jotly-notebook-squareish.png": "/site/static/media/jotly-notebook-squareish.1e879024.png",
+    "static/media/me.JPG": "/site/static/media/me.3e7018d0.JPG",
+    "static/media/styles.css": "/site/static/media/other.b281c334.jpg",
+    "static/media/resume.pdf": "/site/static/media/resume.965c6a07.pdf"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.53d1ec00.js",
+    "static/js/2.4c4c0d43.chunk.js",
+    "static/css/main.8c4c166a.chunk.css",
+    "static/js/main.f1d0b3ae.chunk.js"
+  ]
 }
