@@ -41,7 +41,7 @@ export default class About extends React.Component {
 						</div>
 						<div className="about-me-side" >
 							<p>
-								Hello, I'm Michael Landolfi and I'm currently a Software Engineer II at Quicken.
+								Hello, I'm Michael Landolfi and I'm currently a Senior Software Engineer at Quicken.
 								I work on Simplifi, which is a personal finance management tool. My responsibilites range
 								from building custom and reusable components to writing and testing complex logic to perform
 								calculations on thousands of financial transactions.

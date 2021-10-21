@@ -144,7 +144,7 @@ export default class Resume extends React.Component {
 							}
 							<div className="on-text" >
 								<h1 className="on-text" >
-									Quicken - Software Engineer II, Menlo Park, CA
+									Quicken - Senior Software Engineer, Menlo Park, CA
 								</h1>
 								<h4 className="on-text" >
 									June 2020 - Present
