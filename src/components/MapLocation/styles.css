@@ -15,4 +15,5 @@
 	width: 18px;
 	background: var(--light-blue);
 	margin-right: 10px;
+	border-radius: 4px;
 }

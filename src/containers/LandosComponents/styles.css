@@ -1,0 +1,53 @@
+
+
+.comp-root {
+  background: var(--background-color);
+  width: calc(100vw);
+  height: calc(100vh);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  box-sizing: border-box;
+}
+f
+
+.comp-scene {
+  box-shadow: 0px 0px 60px 30px #666;
+  perspective: 1000px;
+  width: 100%;
+  height: 100%;
+  border: 2px solid black;
+  box-sizing: border-box;
+}
+
+.comp-cube {
+  transform-style: preserve-3d;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform: translateZ(-100px);
+  transition: 50ms;
+  top: 25%;
+  left: 25%;
+}
+
+.comp-cube-face {
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  opacity: 0.95;
+  border: 2px solid #eee;
+}
+
+.comp-cube-front { transform: rotateY(0deg) translateZ(100px); background: #333; }
+.comp-cube-right { transform: rotateY(90deg) translateZ(100px); background: #333; }
+.comp-cube-back { transform: rotateY(180deg) translateZ(100px); background: #333; }
+.comp-cube-left { transform: rotateY(-90deg) translateZ(100px); background: #333; }
+.comp-cube-top { transform: rotateX(90deg) translateZ(100px); background: #333; }
+.comp-cube-bottom { transform: rotateX(-90deg) translateZ(100px); background:#333; }

@@ -10,8 +10,8 @@ export default class Particles extends React.Component {
 		super(props);
 		this.state = {
 			num: 200,
-			minR: 4,
-			maxR: 8,
+			minR: 1,
+			maxR: 30,
 			lineDist: 150,
 		};
 		this.drawLines = true;
@@ -25,14 +25,19 @@ export default class Particles extends React.Component {
 		this.context.clearRect(0, 0, window.innerWidth, window.innerHeight);
 		// drawing the particles themselves
 		this.context.fillStyle = "#22A29F";
+		this.context.shadowColor = '#333333';
 		this.bois.forEach((bp) => {
+			const [ x, y, r ] = bp.moveAndGet();
+			this.context.shadowBlur = this.state.maxR+1 - r;
 			this.context.beginPath();
-			const [ x, y ] = bp.moveAndGet();
-			this.context.arc(x, y, bp.radius, 0, 2*Math.PI);
+			this.context.arc(x, y, r, 0, 2*Math.PI);
 			this.context.closePath();
+
 			// this.context.fillStyle = `rgba(255, 255, 255, ${bp.radius / this.state.maxR})`
 			this.context.fill();
 		});
+		this.context.shadowColor = null;
+		this.context.shadowBlur = 0;
 		if (!this.drawLines)	return;
 		// now to draw the lines between them
 		this.bois.forEach((outer) => {
@@ -57,10 +62,10 @@ export default class Particles extends React.Component {
 		this.bois = [];
 		const lineDist = this.state.lineDist;
 		for (let i=0; i<this.state.num; i++) {
-			const temp = new POB(window.innerWidth, window.innerHeight, this.state.maxR, this.state.minR, 0.7, this.state.lineDist);
+			const temp = new POB(window.innerWidth, window.innerHeight, this.state.maxR, this.state.minR, 2, this.state.lineDist);
 			this.context.beginPath();
-			const [ x, y ] = temp.moveAndGet();
-			this.context.arc(x, y, temp.radius, 0, 2*Math.PI);
+			const [ x, y, r ] = temp.moveAndGet();
+			this.context.arc(x, y, r, 0, 2*Math.PI);
 			this.context.closePath();
 			this.context.fill();
 			this.bois.push(temp);

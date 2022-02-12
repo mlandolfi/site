@@ -6,7 +6,6 @@ export default class POB {
 	constructor(boardWidth, boardHeight, maxR, minR, velocityMultiplier, boardPadding) {
 		this.boardWidth = boardWidth;
 		this.boardHeight = boardHeight;
-		console.log(boardWidth, boardHeight);
 
 		this.maxR = maxR;
 		this.minR = minR;
@@ -22,6 +21,7 @@ export default class POB {
 	generate(smooth=false) {
 
 		this.radius = Math.floor(Math.random() * (this.maxR - this.minR + 1)) + this.minR;
+		this.vr = Math.random() * 0.05 * (Math.random() < 0.5 ? 1 : -1) * this.velocityMultiplier
 
 		this.vx = Math.random() * (Math.random() < 0.5 ? 1 : -1) * this.velocityMultiplier;
 		this.vy = Math.random() * (Math.random() < 0.5 ? 1 : -1) * this.velocityMultiplier;
@@ -42,12 +42,18 @@ export default class POB {
 	moveAndGet() {
 		this.x += this.vx;
 		this.y += this.vy;
+		this.radius = this.radius + this.vr;
+		if (this.radius > this.maxR) {
+			this.vr *= -1;
+		}
 		if (this.x > this.boardWidth + this.boardPadding || this.x < -1 * this.boardPadding) {
 			this.generate(true);
 		} else if (this.y > this.boardHeight + this.boardPadding || this.y < -1 * this.boardPadding) {
 			this.generate(true);
+		} else if (this.radius < 1) {
+			this.generate(true)
 		}
-		return [ Math.ceil(this.x), Math.ceil(this.y) ];
+		return [ Math.ceil(this.x), Math.ceil(this.y), this.radius ];
 	}
 
 }

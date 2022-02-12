@@ -2,13 +2,14 @@ import React, { useState } from 'react';
 
 import Particles from '../../containers/Particles';
 import StyleBank from '../../containers/StyleBank';
+import LandosComponents from '../../containers/LandosComponents'; 
 
 import './styles.css';
 
 export default function PlaygroundWrapper(props) {
-	const [tab, setTab] = useState('bank');
+	const [tab, setTab] = useState('Components');
 
-	const TABS = ['Particles', 'StyleBank'];
+	const TABS = ['Particles', 'StyleBank', 'Components'];
 
 	const changeTab = (tab) => (event) => {setTab(tab)};
 
@@ -18,6 +19,8 @@ export default function PlaygroundWrapper(props) {
 				return <Particles />;
 			case 'StyleBank':
 				return <StyleBank />;
+			case 'Components':
+				return <LandosComponents />;
 			default:
 				return <Particles />;
 		}

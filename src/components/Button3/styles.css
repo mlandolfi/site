@@ -1,0 +1,50 @@
+
+
+
+
+.cube3-root {
+  background: var(--background-color);
+  width: calc(100vw);
+  height: calc(100vh);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cube3-scene {
+  width: 400px;
+  height: 400px;
+  perspective: 600px;
+}
+
+.cube3-cube {
+  transform-style: preserve-3d;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform: translateZ(-100px);
+  transition: 50ms;
+  top: 25%;
+  left: 25%;
+  /* transform-origin: 100px 100px; */
+  transform:  rotateY(-20deg) translateZ(100px);
+}
+
+.cube3-cube-face {
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  border: 2px solid #eee;
+}
+
+.cube3-cube-front { transform: rotateY(0deg) translateZ(100px); background: #333; }
+.cube3-cube-right { transform: rotateY(90deg) translateZ(100px); background: #333; }
+.cube3-cube-back { transform: rotateY(180deg) translateZ(100px); background: #333; }
+.cube3-cube-left { transform: rotateY(-90deg) translateZ(100px); background: #333; }
+.cube3-cube-top { transform: rotateX(90deg) translateZ(100px); background: #333; }
+.cube3-cube-bottom { transform: rotateX(-90deg) translateZ(100px); background:#333; }

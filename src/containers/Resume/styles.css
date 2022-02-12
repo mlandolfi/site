@@ -21,10 +21,12 @@
 	margin: auto;
 	color: inherit;
 	border: 2px solid var(--light-blue);
+	border-radius: 4px;
 }
 
 .resume-map {
 	border: 2px solid var(--light-blue);
+	border-radius: 8px;
 	width: 170px;
 	margin: auto;
 	padding: 10px;
@@ -39,6 +41,7 @@
 	background: var(--light-blue);
 	transition: top 0.5s;
 	z-index: -1;
+	border-radius: 4px;
 }
 
 .resume-content {
@@ -64,7 +67,7 @@
 }
 
 #timeline-line {
-	width: 10px;
+	width: 4px;
 	height: 100%;
 	background-color: var(--light-blue);
 	position: absolute;
@@ -89,6 +92,7 @@
 	color: var(--background-color);
 	background-color: var(--light-blue);
 	z-index: 10;
+	border-radius: 4px;
 }
 
 #coursework-container {
@@ -122,6 +126,7 @@
 	height: 4px;
 	width: 18px;
 	background: var(--text-color);
+	border-radius: 4px;
 	margin-right: 10px;
 }
 

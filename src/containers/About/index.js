@@ -4,7 +4,6 @@ import './styles.css'
 import { ArrowDownIcon } from '../../assets/icons';
 
 const photo = require('../../assets/me.JPG');
-console.log(photo)
 
 export default class About extends React.Component {
 
@@ -13,6 +12,19 @@ export default class About extends React.Component {
 			<div id="about-root">
 				{!this.props.isMobile &&
 					<div id="photo-background-container">
+						<div
+							style={{
+								position: 'absolute',
+								top: 0,
+								left: 0,
+								zIndex: 1000,
+								background: 'radial-gradient(at bottom, rgba(255, 111, 1, 0.8), 10%, rgba(0,0,0,0))',
+								// background: 'blue',
+								width: '100%',
+								height: '70%',
+								display: 'none',
+							}}
+						/>
 						<span id="about-photo-text">
 							Michael Landolfi
 							{/*<div style={{ height: 30 }} />
