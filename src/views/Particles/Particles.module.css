@@ -1,0 +1,10 @@
+.root {
+  width: calc(100vw);
+  height: calc(100vh);
+}
+
+.version {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+}

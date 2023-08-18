@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-import Particles from "../../containers/Particles";
+import Particles from "../../views/Particles/Particles";
 import StyleBank from "../../containers/StyleBank";
 
 import "./styles.css";
