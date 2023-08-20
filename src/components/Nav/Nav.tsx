@@ -10,6 +10,7 @@ const PAGES = [
 const PROJECTS = [
   { label: "Particles", path: "particles" },
   { label: "Style Bank", path: "style-bank" },
+  { label: "Tent", path: "tent" },
 ];
 
 export default function Nav({}: {}) {
