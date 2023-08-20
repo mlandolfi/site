@@ -1,12 +1,66 @@
 .root {
   width: calc(100vw);
-  height: calc(100vh);
+  height: 6000px;
   background: var(--background);
+  position: relative;
+}
+
+.bannerContainer {
+  width: 1000px;
+  height: 300px;
   display: flex;
   align-items: center;
   justify-content: center;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  margin-top: -150px;
+  margin-left: -500px;
+  perspective: 1000px;
+  font-size: 64px;
+  text-align: left;
 }
 
-.header {
-  font-size: 10em;
+.banner {
+  perspective: 1000px;
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+  background: var(--background);
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.welcomeBanner {
+  transform: rotateX(0deg);
+}
+
+.introBanner {
+  transform: rotateX(180deg) translateY(-200px) translateZ(150px);
+  display: flex;
+}
+
+.introBanner::after {
+  content: "";
+  width: 4px;
+  height: 66px;
+  background: #333;
+  margin-left: 8px;
+  animation-name: blink;
+  animation-duration: 900ms;
+  animation-iteration-count: infinite;
+  animation-timing-function: steps(1, start);
+}
+
+.wipBanner {
+  transform: translateX(-2000px);
+}
+
+@keyframes blink {
+  0% {
+    backrgound: transparent;
+  }
+  20% {
+    background: var(--background);
+  }
 }
