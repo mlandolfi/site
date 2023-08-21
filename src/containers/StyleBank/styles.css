@@ -2,6 +2,8 @@
   padding-top: 50px;
   height: calc(100vh - 50px); /*50 for padding*/
   position: relative;
+  background: #f2efe0;
+  color: #333;
 }
 
 .bank-header {

@@ -33,6 +33,7 @@ export const Welcome = (): JSX.Element => {
   return (
     <div className={styles.root}>
       <div className={styles.bannerContainer}>
+        <div className={styles.gradient} />
         <span
           className={cx(styles.welcomeBanner, styles.banner)}
           id="welcome-banner"

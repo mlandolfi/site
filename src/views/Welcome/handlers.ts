@@ -182,7 +182,7 @@ export const handleForRemoveAbout = (
       }
       intro.style.display = "flex";
 
-      intro.style.transform = `translateY(-${percentThrough * 400}px)`;
+      intro.style.transform = `translateY(-${percentThrough * 600}px)`;
     }
   }
 };
@@ -203,7 +203,7 @@ export const handleForWIP = (currentScroll: number, lastScroll: number) => {
       }
       intro.style.display = "flex";
 
-      intro.style.transform = `translateX(-${(1 - percentThrough) * 2000}px)`;
+      intro.style.transform = `translateX(-${(1 - percentThrough) * 1600}px)`;
     }
   }
 };

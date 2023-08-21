@@ -9,7 +9,7 @@ const PAGES = [
 
 const PROJECTS = [
   { label: "Particles", path: "particles" },
-  { label: "Style Bank", path: "style-bank" },
+  // { label: "Style Bank", path: "style-bank" },
   { label: "Tent", path: "tent" },
 ];
 

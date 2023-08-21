@@ -1,8 +1,19 @@
 .root {
   width: calc(100vw);
   height: 6000px;
-  background: var(--background);
+  background: var(--background-color);
   position: relative;
+}
+
+.gradient {
+  background: radial-gradient(ellipse 50% 50% at center, #1a2c3e, transparent);
+  width: 120%;
+  height: 300px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-top: -150px;
+  margin-left: -60%;
 }
 
 .bannerContainer {
@@ -18,7 +29,7 @@
   margin-left: -500px;
   perspective: 1000px;
   font-size: 64px;
-  text-align: left;
+  text-align: center;
 }
 
 .banner {
@@ -28,7 +39,7 @@
   background: var(--background);
   position: absolute;
   width: 100%;
-  height: 100%;
+  text-align: center;
 }
 
 .welcomeBanner {
@@ -38,6 +49,8 @@
 .introBanner {
   transform: rotateX(180deg) translateY(-200px) translateZ(150px);
   display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .introBanner::after {
@@ -54,6 +67,9 @@
 
 .wipBanner {
   transform: translateX(-2000px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 @keyframes blink {

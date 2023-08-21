@@ -1,15 +1,22 @@
 :root {
   --dark-blue: #001428;
   --light-blue: #22a29f;
-  --text-color: #212121;
-  --background-color: #f2efe0;
+  /* --text-color: #212121; */
+  --text-color: #fbfaf5;
+  /* --background-color: #f2efe0; */
+  --background-color: var(--dark-blue);
+}
+
+html,
+body {
+  background: var(--background-color);
 }
 
 .app-root {
   /*font-family: 'Fugaz One', cursive;*/
   font-family: "Open Sans", sans-serif;
   letter-spacing: 1px;
-  color: #272727;
+  color: var(--text-color);
   background-color: var(--background-color);
 }
 

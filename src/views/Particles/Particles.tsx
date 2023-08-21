@@ -107,9 +107,7 @@ export const Particles = () => {
         height={window.innerHeight}
         id="particles-canvas-root"
       />
-      <div className={styles.controls}>
-        <button className="t-button">hello</button>
-      </div>
+      <div className={styles.controls}></div>
       <div className={styles.version}>v1.0</div>
     </div>
   );
