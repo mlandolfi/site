@@ -1,18 +1,10 @@
 import { getRandomBetween } from "../../utils";
+import { Particle, Position } from "./types";
 
-export class Floater {
+export class Floater extends Particle {
   boardWidth: number;
   boardHeight: number;
-  maxR: number;
-  minR: number;
-  velocityMultiplier: number;
   boardPadding: number;
-  radius: number = 1;
-  vx: number = 1;
-  vy: number = 1;
-  x: number = 0;
-  y: number = 0;
-  id: number;
 
   constructor({
     boardWidth,
@@ -28,38 +20,37 @@ export class Floater {
     minR: number;
     velocityMultiplier: number;
     boardPadding: number;
-    radius?: number;
   }) {
+    super({
+      maxR,
+      minR,
+      velocityMultiplier,
+    });
+
     this.boardWidth = boardWidth;
     this.boardHeight = boardHeight;
-
-    this.maxR = maxR;
-    this.minR = minR;
-
-    this.velocityMultiplier = velocityMultiplier;
 
     // this is how far particles outside the board can go before being destroyed
     this.boardPadding = boardPadding;
 
-    this.id = getRandomBetween(0, 100000000, true);
-
     this.generate();
   }
-
-  _getRandomV = () => {
-    return 0.5 + Math.random() * (0.8 - 0.5);
-  };
 
   generate(smooth = false) {
     this.radius =
       Math.floor(Math.random() * (this.maxR - this.minR + 1)) + this.minR;
 
+    this.vz =
+      getRandomBetween(0, 0.02) *
+      (Math.random() < 0.5 ? 1 : -1) *
+      this.velocityMultiplier;
+
     this.vx =
-      this._getRandomV() *
+      getRandomBetween(0.5, 0.8) *
       (Math.random() < 0.5 ? 1 : -1) *
       this.velocityMultiplier;
     this.vy =
-      this._getRandomV() *
+      getRandomBetween(0.5, 0.8) *
       (Math.random() < 0.5 ? 1 : -1) *
       this.velocityMultiplier;
     // this.vx = Math.random() < 0.5 ? 1 : -1;
@@ -82,9 +73,20 @@ export class Floater {
           : this.boardHeight + this.boardPadding;
   }
 
-  moveAndGet() {
+  // ---|--- z, 0 < r < 8, midpoint 4 z=0
+
+  moveAndGet(): Position {
     this.x += this.vx;
     this.y += this.vy;
+
+    this.radius += this.vz;
+    this.radius = Math.max(this.radius, 0);
+    if (this.radius === 0) {
+      this.generate(true);
+    } else if (this.radius > this.maxR) {
+      this.vz *= -1;
+    }
+
     if (
       this.x > this.boardWidth + this.boardPadding ||
       this.x < -1 * this.boardPadding
@@ -96,53 +98,14 @@ export class Floater {
     ) {
       this.generate(true);
     }
-    return [Math.ceil(this.x), Math.ceil(this.y)];
+    return { x: Math.ceil(this.x), y: Math.ceil(this.y) };
   }
 }
 
-export const createFloater = ({
-  boardWidth,
-  boardHeight,
-  maxR,
-  minR,
-  velocityMultiplier,
-  boardPadding,
-}: {
-  boardWidth: number;
-  boardHeight: number;
-  maxR: number;
-  minR: number;
-  velocityMultiplier: number;
-  boardPadding: number;
-  radius?: number;
-}) => {
-  return new Floater({
-    boardWidth,
-    boardHeight,
-    maxR,
-    minR,
-    velocityMultiplier,
-    boardPadding,
-  });
-};
-
-const withinRangeOfMouse = (
-  mousePos: { x: number; y: number },
-  x: number,
-  y: number,
-  furthest: number,
-  buffer: number = 5
-) => {
-  const { x: mouseX, y: mouseY } = mousePos;
-  const dist = Math.sqrt(Math.pow(mouseX - x, 2) + Math.pow(mouseY - y, 2));
-  return dist < furthest - buffer;
-};
-
-const lineDist = 150;
+export const LINE_DIST = 150;
 export const drawLines = ({
   particles,
   context,
-  mousePos,
 }: {
   particles: Floater[];
   context: CanvasRenderingContext2D;
@@ -158,24 +121,23 @@ export const drawLines = ({
       if (!context) {
         continue;
       }
-      const furthest = 180;
-      if (
-        mousePos &&
-        (!withinRangeOfMouse(mousePos, outer.x, outer.y, furthest) ||
-          !withinRangeOfMouse(mousePos, inner.x, inner.y, furthest))
-      ) {
+      if (outer.radius === 0 || inner.radius === 0) {
         continue;
       }
 
       const pointDist = Math.sqrt(
-        Math.pow(outer.x - inner.x, 2) + Math.pow(outer.y - inner.y, 2)
+        Math.pow(outer.x - inner.x, 2) +
+          Math.pow(outer.y - inner.y, 2) +
+          Math.pow(outer.radius - inner.radius, 2)
       );
       if (
-        pointDist < lineDist &&
+        pointDist < LINE_DIST &&
         !(outer.x === inner.x && outer.y === inner.y)
       ) {
         lines.push([outer.id, inner.id]);
-        context.strokeStyle = `rgba(34, 162, 159, ${1 - pointDist / lineDist})`;
+        context.strokeStyle = `rgba(34, 162, 159, ${
+          1 - pointDist / LINE_DIST
+        })`;
         context.beginPath();
         context.moveTo(outer.x, outer.y);
         context.lineTo(inner.x, inner.y);
@@ -214,13 +176,6 @@ export const drawTriangles = ({
       const inner = particles[j];
 
       if (!context) {
-        continue;
-      }
-      const furthest = 100;
-      if (
-        !withinRangeOfMouse(mousePos, outer.x, outer.y, furthest) ||
-        !withinRangeOfMouse(mousePos, inner.x, inner.y, furthest)
-      ) {
         continue;
       }
 

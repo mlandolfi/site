@@ -8,11 +8,11 @@
 .gradient {
   background: radial-gradient(ellipse 50% 50% at center, #1a2c3e, transparent);
   width: 120%;
-  height: 300px;
+  height: 280px;
   position: absolute;
   top: 50%;
   left: 50%;
-  margin-top: -150px;
+  margin-top: -140px;
   margin-left: -60%;
 }
 
@@ -66,7 +66,7 @@
 }
 
 .wipBanner {
-  transform: translateX(-2000px);
+  opacity: 0;
   display: flex;
   align-items: center;
   justify-content: center;

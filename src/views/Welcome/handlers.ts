@@ -178,16 +178,17 @@ export const handleForRemoveAbout = (
     const intro = document.getElementById("intro-banner");
     if (intro) {
       if (currentPartitionIndex === -1) {
+        intro.style.display = "none";
         return;
       }
       intro.style.display = "flex";
 
-      intro.style.transform = `translateY(-${percentThrough * 600}px)`;
+      intro.style.opacity = `${1 - percentThrough}`;
     }
   }
 };
 
-const wipPartitions = Array.from({ length: 90 }, (_, i) => i * 10 + 3750);
+const wipPartitions = Array.from({ length: 90 }, (_, i) => i * 10 + 4400);
 export const handleForWIP = (currentScroll: number, lastScroll: number) => {
   const { currentPartitionIndex, lastPartitionIndex, percentThrough } =
     getPartitionIndexes({
@@ -203,7 +204,7 @@ export const handleForWIP = (currentScroll: number, lastScroll: number) => {
       }
       intro.style.display = "flex";
 
-      intro.style.transform = `translateX(-${(1 - percentThrough) * 1600}px)`;
+      intro.style.opacity = `${percentThrough}`;
     }
   }
 };
