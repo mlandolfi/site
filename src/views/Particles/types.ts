@@ -1,20 +1,23 @@
 import { getRandomBetween } from "../../utils";
 
-export interface Position {
+export interface Vector {
   x: number;
   y: number;
+  z: number;
 }
+
+export type Position = Vector;
+export type Velocity = Vector;
+export type Acceleration = Vector;
+
+export const emptyVector = { x: 0, y: 0, z: 0 };
 
 export abstract class Particle {
   maxR: number;
   minR: number;
   velocityMultiplier: number;
-  radius: number = 1;
-  vx: number = 1;
-  vy: number = 1;
-  vz: number = 1;
-  x: number = 0;
-  y: number = 0;
+  velocity: Velocity = { ...emptyVector };
+  pos: Position = { ...emptyVector };
   id: number;
 
   constructor({
@@ -39,15 +42,15 @@ export abstract class Particle {
 
   draw(context: CanvasRenderingContext2D) {
     context.beginPath();
-    context.arc(this.x, this.y, this.radius, 0, 2 * Math.PI);
+    context.arc(this.pos.x, this.pos.y, Math.ceil(this.pos.z), 0, 2 * Math.PI);
 
     const gradient = context.createRadialGradient(
-      this.x,
-      this.y,
+      this.pos.x,
+      this.pos.y,
       0,
-      this.x,
-      this.y,
-      this.radius
+      this.pos.x,
+      this.pos.y,
+      this.pos.z
     );
 
     // gradient.addColorStop(0.1, "rgb(58, 245, 242)"); // The lightest point (almost white, for the highlight)

@@ -1,10 +1,12 @@
 import React from "react";
-import styles from "./Nav.module.css";
+import cx from "classnames";
 import { Link, useLocation } from "react-router-dom";
 
+import styles from "./Nav.module.css";
+
 const PAGES = [
-  { label: "Welcome", path: "/site" },
-  { label: "Sandbox", path: "/site/sandbox" },
+  { label: "Welcome", path: "/site/welcome" },
+  { label: "Sandbox", path: "/site/sandbox/particles" },
 ];
 
 const PROJECTS = [
@@ -19,11 +21,17 @@ export default function Nav({}: {}) {
   const navButtons = React.useMemo(
     () =>
       PAGES.map((p) => (
-        <Link className={styles.toolbarLink} to={p.path}>
+        <Link
+          className={cx(
+            styles.toolbarLink,
+            pathname.includes(p.path) && styles.selectedButton
+          )}
+          to={p.path}
+        >
           {p.label}
         </Link>
       )),
-    []
+    [pathname]
   );
 
   const sandboxButtons = React.useMemo(() => {
@@ -31,7 +39,13 @@ export default function Nav({}: {}) {
       return (
         <div className={styles.sandboxButtonsContainer}>
           {PROJECTS.map((p) => (
-            <Link className={styles.toolbarLink} to={`/site/sandbox/${p.path}`}>
+            <Link
+              className={cx(
+                styles.toolbarLink,
+                pathname.includes(p.path) && styles.selectedButton
+              )}
+              to={`/site/sandbox/${p.path}`}
+            >
               {p.label}
             </Link>
           ))}

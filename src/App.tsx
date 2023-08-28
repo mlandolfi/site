@@ -9,9 +9,9 @@ import MineGame from "./containers/MineGame";
 import SvgBuilder from "./containers/SvgBuilder";
 import Nav from "./components/Nav/Nav";
 
-import Footer, { FOOTER_HEIGHT } from "./components/Footer";
 import Sandbox from "./views/Sandbox/Sandbox";
 import { Tent } from "./views/Tent/Tent";
+import { Redirect } from "./components/Redirect/Redirect";
 
 /* Quotes:
 
@@ -40,9 +40,13 @@ function App(): JSX.Element {
       <div className="app-root">
         <Nav />
         <Routes>
-          <Route path={"/site/tent"} Component={Tent} />
-          <Route path={"/site/sandbox/:projectName?"} Component={Sandbox} />
-          <Route path={"/site"} Component={Welcome} />
+          <Route path="/site/tent" Component={Tent} />
+          <Route path="/site/sandbox/:projectName?" Component={Sandbox} />
+          <Route path="/site/welcome" Component={Welcome} />
+          <Route
+            path="/site"
+            Component={() => <Redirect to="/site/welcome" />}
+          />
         </Routes>
       </div>
     </Router>

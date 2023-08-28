@@ -6,10 +6,17 @@ import styles from "./Particles.module.css";
 import { drawLines, Floater, LINE_DIST } from "./Floater";
 import { RepelledFloater } from "./RepelledFloater";
 import { throttleFn } from "../../utils";
+import { emptyVector, Position } from "./types";
+import { AcceleratedFloater } from "./AcceleratedFloater";
+
+const getNumParticles = (density: number) => {
+  return Math.floor(window.innerWidth * window.innerHeight * density);
+};
 
 enum Tab {
   Connected = "connected",
   Repelled = "repelled",
+  Accelerated = "accelerated",
 }
 const Tabs = [
   {
@@ -17,7 +24,7 @@ const Tabs = [
     value: Tab.Connected,
     particle: Floater,
     withLines: true,
-    numParticles: 300,
+    particleDensity: 0.0003,
     boardPadding: LINE_DIST,
   },
   {
@@ -25,19 +32,26 @@ const Tabs = [
     value: Tab.Repelled,
     particle: RepelledFloater,
     withLines: false,
-    numParticles: 1500,
+    particleDensity: 0.001,
+  },
+  {
+    label: "Accelerated",
+    value: Tab.Accelerated,
+    particle: AcceleratedFloater,
+    withLines: false,
+    particleDensity: 0.0005,
   },
 ];
 
 export const Particles = () => {
   const [minR, setMinR] = useState(0);
   const [maxR, setMaxR] = useState(4);
-  const [tab, setTab] = useState(Tabs[1]);
+  const [tab, setTab] = useState(Tabs[2]);
   const [context, setContext] = useState<null | CanvasRenderingContext2D>(null);
 
   const particles = useRef<Array<Floater | RepelledFloater>>([]);
   const interval = useRef<any | null>(null);
-  const mousePos = useRef<{ x: number; y: number }>({ x: 0, y: 0 });
+  const mousePos = useRef<Position>({ ...emptyVector });
 
   const onInterval = useCallback(() => {
     if (!context) {
@@ -84,7 +98,7 @@ export const Particles = () => {
     context.clearRect(0, 0, window.innerWidth, window.innerHeight);
 
     particles.current.length = 0;
-    for (let i = 0; i < tab.numParticles; i++) {
+    for (let i = 0; i < getNumParticles(tab.particleDensity); i++) {
       const temp = new tab.particle({
         boardWidth: window.innerWidth,
         boardHeight: window.innerHeight,
@@ -154,6 +168,18 @@ export const Particles = () => {
           )}
         >
           Repelled
+        </button>
+        <button
+          onClick={() => {
+            particles.current.length = 0;
+            setTab(Tabs[2]);
+          }}
+          className={cx(
+            styles.button,
+            tab.value === Tab.Accelerated && styles.selected
+          )}
+        >
+          Accelerated
         </button>
       </div>
       <div className={styles.version}>v2.0</div>
