@@ -1,10 +1,12 @@
 import { getRandomBetween } from "../../utils";
-import { Particle, Position } from "./types";
+import { Acceleration, Particle, Position, emptyVector } from "./types";
+import { getOrbitalDynamics } from "./utils";
 
-export class Floater extends Particle {
+export class GravitationalFloater extends Particle {
   boardWidth: number;
   boardHeight: number;
   boardPadding: number;
+  acceleration: Acceleration = { ...emptyVector };
 
   constructor({
     boardWidth,
@@ -36,44 +38,16 @@ export class Floater extends Particle {
     this.generate();
   }
 
-  generate(smooth = false) {
+  generate() {
     this.pos.z =
       Math.floor(Math.random() * (this.maxR - this.minR + 1)) + this.minR;
 
-    this.velocity.z =
-      getRandomBetween(0, 0.02) *
-      (Math.random() < 0.5 ? 1 : -1) *
-      this.velocityMultiplier;
+    this.pos.x = Math.floor(Math.random() * (this.boardWidth - 0 + 1)) + 0;
+    this.pos.y = Math.floor(Math.random() * (this.boardHeight - 0 + 1)) + 0;
 
-    this.velocity.x =
-      getRandomBetween(0.5, 0.8) *
-      (Math.random() < 0.5 ? 1 : -1) *
-      this.velocityMultiplier;
-    this.velocity.y =
-      getRandomBetween(0.5, 0.8) *
-      (Math.random() < 0.5 ? 1 : -1) *
-      this.velocityMultiplier;
-    // this.vx = Math.random() < 0.5 ? 1 : -1;
-    // this.vy = Math.random() < 0.5 ? 1 : -1;
-
-    this.pos.x = Math.floor(Math.random() * this.boardWidth);
-    this.pos.y = Math.floor(Math.random() * this.boardHeight);
-
-    if (!smooth) return;
-
-    if (Math.random() < 0.5)
-      this.pos.x =
-        this.velocity.x > 0
-          ? -1 * this.boardPadding
-          : this.boardWidth + this.boardPadding;
-    else
-      this.pos.y =
-        this.velocity.y > 0
-          ? -1 * this.boardPadding
-          : this.boardHeight + this.boardPadding;
+    this.velocity = getOrbitalDynamics(1, this.pos).velocity;
+    this.acceleration = getOrbitalDynamics(1, this.pos).acceleration;
   }
-
-  // ---|--- z, 0 < r < 8, midpoint 4 z=0
 
   moveAndGet(): Position {
     this.pos.x += this.velocity.x;
@@ -81,8 +55,16 @@ export class Floater extends Particle {
 
     this.pos.z += this.velocity.z;
     this.pos.z = Math.max(this.pos.z, 0);
+
+    const { velocity: vChange, acceleration: aChange } = getOrbitalDynamics(
+      1,
+      this.pos
+    );
+    this.velocity = vChange;
+    this.acceleration = aChange;
+
     if (this.pos.z === 0) {
-      this.generate(true);
+      this.generate();
     } else if (this.pos.z > this.maxR) {
       this.velocity.z *= -1;
     }
@@ -91,12 +73,12 @@ export class Floater extends Particle {
       this.pos.x > this.boardWidth + this.boardPadding ||
       this.pos.x < -1 * this.boardPadding
     ) {
-      this.generate(true);
+      this.generate();
     } else if (
       this.pos.y > this.boardHeight + this.boardPadding ||
       this.pos.y < -1 * this.boardPadding
     ) {
-      this.generate(true);
+      this.generate();
     }
     return {
       x: Math.ceil(this.pos.x),

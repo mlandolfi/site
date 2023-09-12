@@ -40,6 +40,11 @@ export abstract class Particle {
   // to be overriden
   generate(): void {}
 
+  // to be overriden
+  moveAndGet(): Position {
+    return this.pos;
+  }
+
   draw(context: CanvasRenderingContext2D) {
     context.beginPath();
     context.arc(this.pos.x, this.pos.y, Math.ceil(this.pos.z), 0, 2 * Math.PI);

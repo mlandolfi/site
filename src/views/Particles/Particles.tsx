@@ -3,55 +3,43 @@ import cx from "classnames";
 
 import styles from "./Particles.module.css";
 
-import { drawLines, Floater, LINE_DIST } from "./Floater";
+import { Floater } from "./Floater";
 import { RepelledFloater } from "./RepelledFloater";
 import { throttleFn } from "../../utils";
-import { emptyVector, Position } from "./types";
 import { AcceleratedFloater } from "./AcceleratedFloater";
+import { Board } from "./Board";
 
-const getNumParticles = (density: number) => {
-  return Math.floor(window.innerWidth * window.innerHeight * density);
+const getParticleDensity = ({
+  mouseRepel,
+  accelerate,
+  drawLines,
+}: {
+  mouseRepel: boolean;
+  accelerate: boolean;
+  drawLines: boolean;
+}) => {
+  if (drawLines) {
+    return 0.0003;
+  }
+  if (mouseRepel) {
+    return 0.001;
+  }
+  if (accelerate) {
+    return 0.0003;
+  }
+  return 0.0003;
 };
 
-enum Tab {
-  Connected = "connected",
-  Repelled = "repelled",
-  Accelerated = "accelerated",
-}
-const Tabs = [
-  {
-    label: "Connected",
-    value: Tab.Connected,
-    particle: Floater,
-    withLines: true,
-    particleDensity: 0.0003,
-    boardPadding: LINE_DIST,
-  },
-  {
-    label: "Repelled",
-    value: Tab.Repelled,
-    particle: RepelledFloater,
-    withLines: false,
-    particleDensity: 0.001,
-  },
-  {
-    label: "Accelerated",
-    value: Tab.Accelerated,
-    particle: AcceleratedFloater,
-    withLines: false,
-    particleDensity: 0.0005,
-  },
-];
-
 export const Particles = () => {
-  const [minR, setMinR] = useState(0);
-  const [maxR, setMaxR] = useState(4);
-  const [tab, setTab] = useState(Tabs[2]);
   const [context, setContext] = useState<null | CanvasRenderingContext2D>(null);
 
-  const particles = useRef<Array<Floater | RepelledFloater>>([]);
+  const [drawLines, setDrawLines] = useState(false);
+  const [mouseRepel, setMouseRepel] = useState(false);
+  const [accelerate, setAccelerate] = useState(false);
+  const [maxR, setMaxR] = useState(4);
+
   const interval = useRef<any | null>(null);
-  const mousePos = useRef<Position>({ ...emptyVector });
+  const board = useRef<Board | null>(null);
 
   const onInterval = useCallback(() => {
     if (!context) {
@@ -59,27 +47,16 @@ export const Particles = () => {
     }
 
     interval.current = requestAnimationFrame(onInterval);
-    // clearing the canvas
-    context.clearRect(0, 0, window.innerWidth, window.innerHeight);
-    // drawing the particles themselves
-    context.fillStyle = "#22A29F";
 
-    particles.current.forEach((bp) => {
-      if (!context) {
-        return;
-      }
-      bp.moveAndGet();
-      bp.draw(context);
-    });
+    board.current?.moveParticles();
+    board.current?.prepareBoardForRedraw();
+    board.current?.drawParticles();
 
     // now to draw the lines between them
-    if (tab.withLines) {
-      drawLines({
-        context: context,
-        particles: particles.current,
-      });
+    if (drawLines) {
+      board.current?.drawConnectingLines();
     }
-  }, [tab, context]);
+  }, [drawLines, context]);
 
   useEffect(() => {
     const canvas = document.getElementById(
@@ -95,47 +72,53 @@ export const Particles = () => {
       return;
     }
 
-    context.clearRect(0, 0, window.innerWidth, window.innerHeight);
-
-    particles.current.length = 0;
-    for (let i = 0; i < getNumParticles(tab.particleDensity); i++) {
-      const temp = new tab.particle({
-        boardWidth: window.innerWidth,
-        boardHeight: window.innerHeight,
-        maxR,
-        minR,
-        velocityMultiplier: 0.1,
-        boardPadding: tab.boardPadding ?? maxR,
-      });
-      temp.moveAndGet();
-      temp.draw(context);
-      particles.current.push(temp);
+    let pc = Floater;
+    if (mouseRepel) {
+      pc = RepelledFloater;
+    } else if (accelerate) {
+      pc = AcceleratedFloater;
     }
+
+    board.current = new Board({
+      width: window.innerWidth,
+      height: window.innerHeight,
+      padding: 50,
+      particleConstructor: pc,
+      context,
+      particleDensity: getParticleDensity({
+        mouseRepel,
+        accelerate,
+        drawLines,
+      }),
+      maxR,
+    });
+    board.current.generateParticles();
+    board.current.moveParticles();
+    board.current.prepareBoardForRedraw();
+    board.current.drawParticles();
 
     interval.current = window.requestAnimationFrame(onInterval);
 
     return () => {
       window.cancelAnimationFrame(interval.current);
     };
-  }, [maxR, minR, onInterval, tab, context]);
+  }, [onInterval, context, mouseRepel, accelerate, drawLines, maxR]);
 
   // set an on mouse move event listener
   useEffect(() => {
+    if (!mouseRepel) {
+      return;
+    }
+
     const onMouseMove = (e: MouseEvent) => {
-      mousePos.current.x = e.clientX;
-      mousePos.current.y = e.clientY;
-      particles.current.forEach((p) => {
-        if (p instanceof RepelledFloater && context) {
-          p.reactToMouse(mousePos.current);
-        }
-      });
+      board.current?.onMouseMove(e.clientX, e.clientY);
     };
     const throttledOnMouseMove = throttleFn(onMouseMove, 5);
     window.addEventListener("mousemove", throttledOnMouseMove);
     return () => {
       window.removeEventListener("mousemove", throttledOnMouseMove);
     };
-  }, [context]);
+  }, [context, mouseRepel]);
 
   return (
     <div className={styles.root}>
@@ -145,44 +128,46 @@ export const Particles = () => {
         id="particles-canvas-root"
       />
       <div className={styles.controls}>
-        <button
-          onClick={() => {
-            particles.current.length = 0;
-            setTab(Tabs[0]);
-          }}
-          className={cx(
-            styles.button,
-            tab.value === Tab.Connected && styles.selected
-          )}
-        >
-          Connected
-        </button>
-        <button
-          onClick={() => {
-            particles.current.length = 0;
-            setTab(Tabs[1]);
-          }}
-          className={cx(
-            styles.button,
-            tab.value === Tab.Repelled && styles.selected
-          )}
-        >
-          Repelled
-        </button>
-        <button
-          onClick={() => {
-            particles.current.length = 0;
-            setTab(Tabs[2]);
-          }}
-          className={cx(
-            styles.button,
-            tab.value === Tab.Accelerated && styles.selected
-          )}
-        >
-          Accelerated
-        </button>
+        <div className={styles.controlOptionsContainer}>
+          <button
+            onClick={() => {
+              setDrawLines(!drawLines);
+            }}
+            className={cx(styles.button, drawLines && styles.selected)}
+          >
+            Lines
+          </button>
+          <button
+            onClick={() => {
+              setAccelerate(false);
+              setMouseRepel(!mouseRepel);
+            }}
+            className={cx(styles.button, mouseRepel && styles.selected)}
+          >
+            Repelled
+          </button>
+          <button
+            onClick={() => {
+              setMouseRepel(false);
+              setAccelerate(!accelerate);
+            }}
+            className={cx(styles.button, accelerate && styles.selected)}
+          >
+            Accelerated
+          </button>
+        </div>
+        {/* <div>
+          <input
+            type="range"
+            value={maxR}
+            min={1}
+            max={24}
+            className={styles.radiusSlider}
+            onChange={(e) => setMaxR(parseInt(e.target.value))}
+          />
+        </div> */}
       </div>
-      <div className={styles.version}>v2.0</div>
+      <div className={styles.version}>v3.0</div>
     </div>
   );
 };
